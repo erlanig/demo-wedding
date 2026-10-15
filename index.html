@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>The Sundanese Royal Wedding of Nazwa & Luthfi - 11.11.2026</title>
+<title>The Sundanese Royal Wedding of Luthfiani & Fakhri - 11.11.2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#FFFDF8;--soft:#FDF6E9;--gold:#C59B27;--gold-b:#E6C15A;--gold-d:#8C6910;--terra:#B86B4B;--green:#3E6B52;--text:#3A2E25;--muted:#78685A;--shadow:0 14px 36px rgba(197,155,39,.18);color-scheme:light;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--cream:#FFFDF8;--soft:#FDF6E9;--gold:#C59B27;--gold-b:#E6C15A;--gold-d:#8C6910;--terra:#B86B4B;--green:#3E6B52;--text:#3A2E25;--muted:#78685A;--shadow:0 14px 36px rgba(197,155,39,.18);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.7}
@@ -18,53 +17,59 @@ body.locked{overflow:hidden}
 .script{font-family:'Great Vibes',cursive;color:var(--gold);font-weight:400}
 #petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:90}
 svg{display:block}
-
-/* tombol & lencana */
 .btn{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;border:1px solid var(--gold-b);padding:.85rem 2.1rem;border-radius:50px;font:600 .95rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;box-shadow:0 10px 24px rgba(140,105,16,.35);display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;transition:transform .3s}
 .btn:active,.btn:hover{transform:translateY(-3px) scale(1.02)}
 .badge{display:inline-block;background:var(--soft);border:1px solid var(--gold-b);color:var(--gold-d);padding:.3rem 1rem;border-radius:50px;font-size:.74rem;letter-spacing:2px;font-weight:600;margin-bottom:.8rem}
 
 /* SAMPUL */
-#cover{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at center,#FFFDF9 0%,#F4DDB6 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.2rem;transition:opacity 1.2s ease,transform 1.4s ease,visibility 1.4s}
-#cover.gone{opacity:0;visibility:hidden;transform:scale(1.25);pointer-events:none}
-.cover-kujang{position:absolute;top:50%;height:min(62vh,420px);opacity:.9;animation:kujangIn 1.6s cubic-bezier(.2,.8,.2,1) both}
+#cover{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at center,#FFFDF9 0%,#F4DDB6 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.2rem;transition:opacity 1s ease,visibility 1s}
+#cover.gone{opacity:0;visibility:hidden;pointer-events:none}
+.cover-kujang{position:absolute;top:50%;height:min(62vh,420px);opacity:.9;pointer-events:none;animation:kujangIn 1.6s cubic-bezier(.2,.8,.2,1) both}
 .cover-kujang.l{left:2%;transform:translateY(-50%) rotate(-18deg)}
 .cover-kujang.r{right:2%;transform:translateY(-50%) rotate(18deg) scaleX(-1)}
 @keyframes kujangIn{from{opacity:0;margin-top:40vh}to{opacity:.9;margin-top:0}}
 .cover-card{background:rgba(255,255,255,.92);padding:1rem 2rem;border-radius:18px;border:1px solid var(--gold-b);margin:1rem 0 1.4rem;box-shadow:var(--shadow);position:relative;z-index:2}
 #cover h1{font-size:clamp(3rem,13vw,4.6rem);line-height:1.1;position:relative;z-index:2}
-#cover .badge,#cover p{position:relative;z-index:2}
+#cover .badge,#cover p,#cover .btn{position:relative;z-index:3}
 
 /* TEROWONGAN CANDI */
-.tunnel{position:relative;height:260vh}
-.tunnel.close{height:230vh}
+.tunnel{position:relative;height:340vh}
+.tunnel.close{height:280vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;width:100%;overflow:hidden;background:linear-gradient(180deg,#FFF3DA 0%,#FFFDF8 62%,#F6E8CF 100%);display:flex;align-items:center;justify-content:center;z-index:30}
-.sun{position:absolute;top:8%;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,223,138,.65),rgba(255,248,235,0) 70%);animation:pulse 6s ease-in-out infinite}
+.sun{position:absolute;top:8%;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,223,138,.65),rgba(255,248,235,0) 70%);animation:pulse 6s ease-in-out infinite;pointer-events:none}
 @keyframes pulse{50%{transform:scale(1.12);opacity:.8}}
 .mount{position:absolute;bottom:0;width:100%;height:46%;pointer-events:none}
+.cir{position:absolute;bottom:16%;left:50%;width:min(1100px,190vw);transform:translateX(-50%);z-index:1;pointer-events:none;will-change:transform}
+.mist{position:absolute;left:-10%;right:-10%;bottom:26%;height:110px;background:linear-gradient(transparent,rgba(255,255,255,.8),transparent);animation:mist 14s ease-in-out infinite alternate;z-index:3;pointer-events:none}
+@keyframes mist{to{transform:translateX(7%)}}
 .clouds{position:absolute;top:10%;width:100%;display:flex;justify-content:space-between;padding:0 4%;pointer-events:none;z-index:4}
 .clouds svg{animation:drift 9s ease-in-out infinite alternate;width:clamp(90px,22vw,170px);height:auto}
 .clouds svg+svg{animation-duration:12s;animation-direction:alternate-reverse}
 @keyframes drift{to{transform:translateX(26px)}}
 .reveal{position:relative;z-index:5;text-align:center;padding:1rem;max-width:720px;width:100%;transform:scale(.82);opacity:.35}
-.reveal.fade-out{pointer-events:none}
 .couple{width:min(290px,70vw);margin:0 auto .3rem}
 .reveal h1{font-size:clamp(3rem,14vw,4.6rem);line-height:1.05}
 .date{font-size:clamp(1rem,4.4vw,1.35rem);font-weight:700;color:var(--gold-d);letter-spacing:3px;margin:.3rem 0 .8rem}
 .gz{position:absolute;inset:0;z-index:10;pointer-events:none;transform-origin:50% 60%}
-.gz.play{animation:zoomGate 3.2s cubic-bezier(.3,.7,.2,1) both}
-@keyframes zoomGate{0%{transform:scale(2.3);filter:blur(6px)}45%{transform:scale(.9);filter:blur(0)}100%{transform:scale(1)}}
-.gate{position:absolute;bottom:-2%;height:96%;width:46vw;max-width:520px;will-change:transform,opacity;filter:drop-shadow(0 18px 30px rgba(58,46,37,.25))}
+.gz.play{animation:zoomGate 2.4s cubic-bezier(.3,.7,.2,1) both}
+@keyframes zoomGate{0%{transform:scale(2.2)}45%{transform:scale(.92)}100%{transform:scale(1)}}
+.gate{position:absolute;bottom:-2%;height:96%;width:46vw;max-width:520px;will-change:transform,opacity}
 .gate.l{left:0;transform-origin:bottom left}.gate.r{right:0;transform-origin:bottom right}
-.hint{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:20;background:rgba(255,255,255,.9);border:1px solid var(--gold-b);padding:.5rem 1.1rem;border-radius:30px;font-size:.78rem;font-weight:600;color:var(--gold-d);box-shadow:var(--shadow);white-space:nowrap;animation:bob 2s infinite;transition:opacity .4s}
+.hint{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:20;background:rgba(255,255,255,.9);border:1px solid var(--gold-b);padding:.5rem 1.1rem;border-radius:30px;font-size:.78rem;font-weight:600;color:var(--gold-d);box-shadow:var(--shadow);white-space:nowrap;pointer-events:none;animation:bob 2s infinite;transition:opacity .4s}
 @keyframes bob{50%{margin-bottom:8px}}
 .kujang-x{position:absolute;z-index:12;width:min(240px,50vw);opacity:0;pointer-events:none}
 .close-text{position:relative;z-index:5;text-align:center;padding:1rem}
+/* bunga pembuka (satu bunga, tidak menangkap klik) */
+#flower1{position:fixed;left:0;top:0;width:54px;height:54px;z-index:960;pointer-events:none;display:none;filter:drop-shadow(0 0 8px rgba(255,224,138,.9))}
+.landed{position:absolute;z-index:12;bottom:5%;left:50%;width:50px;margin-left:-25px;opacity:0;transition:opacity .6s;animation:bobf 2.4s ease-in-out infinite;pointer-events:none}
+.landed.show{opacity:1}
+@keyframes bobf{50%{transform:translateY(-6px) rotate(8deg)}}
 
 /* SECTION */
 section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;position:relative;z-index:25}
 .h2{font-size:clamp(2.3rem,9vw,3.2rem);margin-bottom:1rem;line-height:1.2}
 .divider{width:min(220px,60vw);height:28px;margin:.4rem auto 1.6rem}
+.divider polygon{animation:pulse 3s infinite;transform-box:fill-box;transform-origin:center}
 .sunda-card{background:#fff;border-radius:26px;padding:2.2rem 1.5rem;border:1px solid rgba(197,155,39,.3);box-shadow:var(--shadow)}
 .couple-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-top:2rem}
 .mono{width:130px;height:130px;margin:0 auto 1rem;border-radius:50%;border:3px solid var(--gold);background:radial-gradient(circle,#FFFDF8,#F7E6C4);display:flex;align-items:center;justify-content:center;font-size:4rem;box-shadow:0 10px 24px rgba(197,155,39,.25)}
@@ -89,14 +94,16 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
 .road{position:relative;height:clamp(250px,62vw,340px);margin:1.6rem -1.2rem 0;overflow:hidden;background:linear-gradient(180deg,#FFF1D2,#FDF6E9 58%,#B9C98B 58%,#8FAA68 100%);border-top:2px solid var(--gold-b);border-bottom:2px solid var(--gold-b)}
 .road .mt{position:absolute;bottom:42%;left:50%;transform:translateX(-50%);width:min(560px,130vw)}
 .road .tanah{position:absolute;left:0;right:0;bottom:0;height:20%;background:#C9A06A;border-top:3px dashed #A57C45}
+.padi{position:absolute;left:0;right:0;bottom:19%;height:36px;background:repeating-linear-gradient(100deg,transparent 0 6px,#5C8A4E 6px 8px);transform-origin:bottom;animation:padi 2.6s ease-in-out infinite alternate;opacity:.85}
+@keyframes padi{from{transform:skewX(-6deg)}to{transform:skewX(6deg)}}
 .delman{position:absolute;bottom:7%;width:clamp(230px,60vw,320px);animation:ride 13s linear infinite}
 @keyframes ride{from{left:-340px}to{left:100%}}
-.wheel{transform-origin:center;transform-box:fill-box;animation:spin .9s linear infinite}
-.leg{transform-box:view-box;animation:trot .45s ease-in-out infinite alternate}
+.wheel{transform-box:fill-box;transform-origin:center;animation:spin .9s linear infinite}
+.leg{animation:trot .45s ease-in-out infinite alternate}
 .leg.a{transform-origin:196px 84px}.leg.b{transform-origin:150px 86px;animation-delay:-.22s}
 .leg.c{transform-origin:206px 84px;animation-delay:-.22s}.leg.d{transform-origin:140px 86px}
 @keyframes trot{from{transform:rotate(-24deg)}to{transform:rotate(24deg)}}
-.bob{animation:cartBob .45s ease-in-out infinite alternate}
+.cartbob{animation:cartBob .45s ease-in-out infinite alternate}
 @keyframes cartBob{to{transform:translateY(-3px)}}
 .bird{position:absolute;animation:fly 16s linear infinite}
 @keyframes fly{from{left:-5%}to{left:105%}}
@@ -108,6 +115,8 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
 @keyframes hit{0%{transform:scale(1)}20%{transform:scale(1.14) translateY(-4px);filter:drop-shadow(0 0 12px #FFD966)}100%{transform:scale(1)}}
 .mallet{transform-box:fill-box;transform-origin:100% 100%;animation:strike 1.1s ease-in-out infinite}
 @keyframes strike{0%,100%{transform:rotate(-24deg)}15%{transform:rotate(14deg)}}
+@keyframes sway{50%{transform:rotate(1.6deg)}0%,100%{transform:rotate(-1.2deg)}}
+@keyframes swing{50%{transform:rotate(5deg)}0%,100%{transform:rotate(-5deg)}}
 
 @media (max-width:768px){
  .couple-grid{grid-template-columns:1fr}
@@ -115,7 +124,7 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  .gate.l{left:-.25vw}.gate.r{right:-.25vw}
  .reveal{padding:.6rem}
  section{padding:3.5rem 1rem}
- .cover-kujang{height:34vh;opacity:.55!important;top:auto;bottom:4%}
+ .cover-kujang{height:30vh;opacity:.5!important;top:auto;bottom:3%}
  .cover-kujang.l,.cover-kujang.r{transform:none}
  .cover-kujang.r{transform:scaleX(-1)}
 }
@@ -124,11 +133,9 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
 </head>
 <body class="locked">
 
-<!-- Aset SVG bersama -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <linearGradient id="gld" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF2B2"/><stop offset=".5" stop-color="#E6C15A"/><stop offset="1" stop-color="#8C6910"/></linearGradient>
 <linearGradient id="stl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F4F0E6"/><stop offset=".5" stop-color="#CFC6B0"/><stop offset="1" stop-color="#8E8672"/></linearGradient>
-<!-- Candi bentar (sisi kiri) -->
 <g id="gl">
  <polygon points="30,680 295,680 295,520 50,520" fill="#D5B88B" stroke="#8C6910" stroke-width="2"/>
  <rect x="40" y="500" width="255" height="24" fill="#C59B27"/>
@@ -143,17 +150,15 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  <rect x="140" y="385" width="115" height="80" rx="6" fill="#B86B4B" opacity=".25" stroke="#8C6910" stroke-width="2"/>
  <rect x="175" y="220" width="85" height="75" rx="6" fill="#C59B27" opacity=".3" stroke="#8C6910" stroke-width="2"/>
 </g>
-<!-- Kujang -->
 <g id="kj">
- <path d="M50 6 C78 22 88 52 74 84 C88 88 92 104 80 112 C92 122 88 142 70 148 L66 170 L36 170 L32 148 C14 142 10 122 22 112 C10 104 14 88 28 84 C14 52 22 22 50 6Z" fill="url(#stl)" stroke="#5E5846" stroke-width="2"/>
- <path d="M50 14 C66 32 70 54 60 80" stroke="#fff" stroke-width="2" fill="none" opacity=".6"/>
- <circle cx="50" cy="60" r="5" fill="#FFFDF8" stroke="#5E5846" stroke-width="1.5"/>
- <circle cx="40" cy="96" r="3.5" fill="#FFFDF8" stroke="#5E5846"/><circle cx="60" cy="96" r="3.5" fill="#FFFDF8" stroke="#5E5846"/>
- <rect x="34" y="168" width="32" height="14" rx="3" fill="#C59B27" stroke="#8C6910" stroke-width="2"/>
- <path d="M38 182 L36 270 Q50 286 64 270 L62 182Z" fill="#8C6910" stroke="#5E3A10" stroke-width="2"/>
- <rect x="36" y="204" width="28" height="6" fill="#E6C15A"/><rect x="36" y="232" width="28" height="6" fill="#E6C15A"/>
- <circle cx="50" cy="282" r="6" fill="#E6C15A" stroke="#8C6910" stroke-width="2"/>
+ <path d="M52 4 C72 20 82 46 76 70 L84 76 L74 84 L82 92 L72 100 L80 110 L68 120 L66 150 L38 150 L40 124 C26 104 22 66 34 36 C38 24 44 12 52 4Z" fill="url(#stl)" stroke="#5E5846" stroke-width="2"/>
+ <path d="M50 14 C38 40 34 80 46 124" stroke="#fff" stroke-width="2" fill="none" opacity=".7"/>
+ <circle cx="54" cy="66" r="5" fill="#FFFDF8" stroke="#5E5846" stroke-width="1.5"/><circle cx="52" cy="96" r="3" fill="#FFFDF8" stroke="#5E5846"/>
+ <rect x="30" y="150" width="44" height="14" rx="4" fill="#C59B27" stroke="#8C6910" stroke-width="2"/>
+ <path d="M40 164 L62 164 L60 236 C60 258 76 262 86 252 C84 278 50 286 44 262Z" fill="#8C6910" stroke="#5E3A10" stroke-width="2"/>
+ <rect x="40" y="184" width="21" height="5" fill="#E6C15A"/><rect x="41" y="212" width="20" height="5" fill="#E6C15A"/><circle cx="82" cy="254" r="3" fill="#FFE08A"/>
 </g>
+<g id="flw"><g fill="#fff" stroke="#D5B88B" stroke-width="1.2"><ellipse cy="-12" rx="6" ry="11"/><ellipse cy="-12" rx="6" ry="11" transform="rotate(72)"/><ellipse cy="-12" rx="6" ry="11" transform="rotate(144)"/><ellipse cy="-12" rx="6" ry="11" transform="rotate(216)"/><ellipse cy="-12" rx="6" ry="11" transform="rotate(288)"/></g><circle r="4.5" fill="#E6C15A" stroke="#8C6910"/></g>
 <path id="cloud" d="M10 56 Q18 26 52 38 Q76 10 110 36 Q140 28 148 56 Z" fill="#FFFDF8" stroke="#E6C15A" stroke-width="2"/>
 <g id="ciremai"><path d="M0 200 L90 120 L130 80 L170 40 L200 20 L232 44 L270 90 L330 140 L420 200Z" fill="#9FB287"/><path d="M200 20 L232 44 L270 90 L200 70 L170 40Z" fill="#B9C9A2"/><path d="M0 200 L130 140 L250 200Z" fill="#7F9969"/></g>
 </defs></svg>
@@ -165,18 +170,20 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  <svg class="cover-kujang l" viewBox="0 0 100 290"><use href="#kj"/></svg>
  <svg class="cover-kujang r" viewBox="0 0 100 290"><use href="#kj"/></svg>
  <span class="badge">Wilujeng Sumping</span>
- <h1 class="script">Nazwa & Luthfi</h1>
+ <h1 class="script">Luthfiani & Fakhri</h1>
  <p style="color:var(--muted);font-weight:500;letter-spacing:2px">11 NOVEMBER 2026 • BANDUNG</p>
  <div class="cover-card"><small style="color:var(--muted);display:block">Kahatur Bapak/Ibu/Saderek:</small><strong id="guest" style="font-size:1.2rem">Tamu Kehormatan</strong></div>
- <button class="btn" onclick="openInvite()">🍃 Buka Undangan</button>
+ <button class="btn" type="button" onclick="openInvite()">Buka Undangan</button>
 </div>
 
-<button id="music" class="fab paused" onclick="toggleMusic()" aria-label="Musik gamelan">♪</button>
+<button id="music" class="fab paused" type="button" onclick="toggleMusic()" aria-label="Musik gamelan">♪</button>
+<svg id="flower1" viewBox="-30 -30 60 60"><use href="#flw"/></svg>
 
 <!-- PEMBUKAAN: CANDI -->
 <div class="tunnel" id="t-open">
  <div class="stage">
   <div class="sun"></div>
+  <svg class="cir" id="cir" viewBox="0 0 420 200"><use href="#ciremai"/></svg><div class="mist"></div>
   <svg class="mount" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#EFE3CE" fill-opacity=".8" d="M0,224L80,197C160,171,320,117,480,128C640,139,800,213,960,229C1120,245,1280,203,1360,181L1440,160L1440,320L0,320Z"/><path fill="#E5D3B3" fill-opacity=".7" d="M0,256L120,240C240,224,480,192,720,197C960,203,1200,245,1320,267L1440,288L1440,320L0,320Z"/></svg>
   <div class="clouds" id="clouds"><svg viewBox="0 0 160 70"><use href="#cloud"/></svg><svg viewBox="0 0 160 70"><use href="#cloud"/></svg></div>
 
@@ -184,6 +191,7 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
    <svg class="gate l" id="g-l" viewBox="0 0 320 680"><use href="#gl"/></svg>
    <svg class="gate r" id="g-r" viewBox="0 0 320 680"><use href="#gl" transform="translate(320 0) scale(-1 1)"/></svg>
   </div>
+  <svg class="landed" id="landed" viewBox="-30 -30 60 60"><use href="#flw"/></svg>
 
   <div class="reveal" id="reveal">
    <span class="badge">Sampurasun • The Wedding Of</span>
@@ -208,15 +216,14 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
      <circle cx="187" cy="122" r="2.2" fill="#3A2E25"/><circle cx="203" cy="122" r="2.2" fill="#3A2E25"/>
      <path d="M189 132 Q195 137 201 132" stroke="#3A2E25" stroke-width="2" stroke-linecap="round"/>
     </g></svg></div>
-   <h1 class="script">Nazwa & Luthfi</h1>
+   <h1 class="script">Luthfiani & Fakhri</h1>
    <p class="serif date">RABU, 11 NOVEMBER 2026</p>
    <p style="color:var(--muted);margin:0 auto 1rem;font-size:.92rem"><strong>Seskoad Grand Ballroom</strong><br>Jl. Gatot Subroto No.96, Kec. Lengkong, Kota Bandung</p>
    <a href="#pasangan" class="btn">Lanjutkan Membaca</a>
   </div>
-  <div class="hint" id="hint">Scroll untuk melewati Gapura</div>
+  <div class="hint" id="hint">↓ Scroll untuk melewati Gapura</div>
  </div>
 </div>
-<style>@keyframes sway{50%{transform:rotate(1.6deg)}0%,100%{transform:rotate(-1.2deg)}}@keyframes swing{50%{transform:rotate(5deg)}0%,100%{transform:rotate(-5deg)}}</style>
 
 <!-- SALAM & MEMPELAI -->
 <section id="pasangan" class="rv">
@@ -225,9 +232,9 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  <svg class="divider" viewBox="0 0 220 28" fill="none"><path d="M10 14H90M130 14H210" stroke="#C59B27" stroke-width="1.5"/><polygon points="110,2 122,14 110,26 98,14" fill="#E6C15A" stroke="#8C6910" stroke-width="1.5"/></svg>
  <p style="max-width:650px;margin:0 auto 1rem;color:var(--muted)">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah kami merangkaikan kasih sayang yang Kau ciptakan dalam ikatan pernikahan putra-putri kami:</p>
  <div class="couple-grid">
-  <div class="sunda-card"><div class="mono script">N</div><h3 class="script" style="font-size:2.8rem">Nazwa</h3><p class="serif" style="font-size:1.35rem;font-weight:700">Nazwa Putri Cantika</p><p style="font-size:.9rem;color:var(--muted)">Putri tercinta dari<br><strong>Bapak Keluarga Nazwa & Ibu Keluarga Nazwa</strong></p></div>
+  <div class="sunda-card"><div class="mono script">N</div><h3 class="script" style="font-size:2.8rem">Luthfiani</h3><p class="serif" style="font-size:1.35rem;font-weight:700">Luthfiani Fauziani</p><p style="font-size:.9rem;color:var(--muted)">Putri tercinta dari<br><strong>Bapak Keluarga Luthfiani & Ibu Keluarga Luthfiani</strong></p></div>
   <div class="script" style="font-size:4rem">&</div>
-  <div class="sunda-card"><div class="mono script">L</div><h3 class="script" style="font-size:2.8rem">Luthfi</h3><p class="serif" style="font-size:1.35rem;font-weight:700">Luthfi Fauzi</p><p style="font-size:.9rem;color:var(--muted)">Putra tercinta dari<br><strong>Bapak Keluarga Luthfi & Ibu Keluarga Luthfi</strong></p></div>
+  <div class="sunda-card"><div class="mono script">L</div><h3 class="script" style="font-size:2.8rem">Fakhri</h3><p class="serif" style="font-size:1.35rem;font-weight:700">Fakhri Nur Rahman</p><p style="font-size:.9rem;color:var(--muted)">Putra tercinta dari<br><strong>Bapak Keluarga Fakhri & Ibu Keluarga Fakhri</strong></p></div>
  </div>
 </section>
 
@@ -238,11 +245,10 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  <p style="color:var(--muted);max-width:560px;margin:0 auto">Dari kaki Gunung Ciremai, delman khas Kuningan membawa doa dan kebahagiaan menuju hari bahagia kami.</p>
  <div class="road">
   <svg class="mt" viewBox="0 0 420 200"><use href="#ciremai"/></svg>
-  <svg class="bird" style="top:14%;animation-duration:20s" width="34" height="14" viewBox="0 0 34 14"><path d="M2 10 Q9 0 17 8 Q25 0 32 10" stroke="#5E5846" stroke-width="2" fill="none"><animate attributeName="d" dur=".7s" repeatCount="indefinite" values="M2 10 Q9 0 17 8 Q25 0 32 10;M2 4 Q9 8 17 8 Q25 8 32 4;M2 10 Q9 0 17 8 Q25 0 32 10"/></path></svg>
-  <div class="tanah"></div>
+  <svg class="bird" style="top:14%" width="34" height="14" viewBox="0 0 34 14"><path d="M2 10 Q9 0 17 8 Q25 0 32 10" stroke="#5E5846" stroke-width="2" fill="none"><animate attributeName="d" dur=".7s" repeatCount="indefinite" values="M2 10 Q9 0 17 8 Q25 0 32 10;M2 4 Q9 8 17 8 Q25 8 32 4;M2 10 Q9 0 17 8 Q25 0 32 10"/></path></svg>
+  <div class="padi"></div><div class="tanah"></div>
   <svg class="delman" viewBox="0 0 330 150" fill="none">
-   <g class="bob">
-   <!-- kuda -->
+   <g class="cartbob">
    <g class="leg d"><path d="M140 86 L136 130" stroke="#6B3E22" stroke-width="7" stroke-linecap="round"/></g>
    <g class="leg a"><path d="M196 84 L204 130" stroke="#6B3E22" stroke-width="7" stroke-linecap="round"/></g>
    <ellipse cx="170" cy="76" rx="42" ry="22" fill="#8B5430"/>
@@ -254,10 +260,8 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
    <path d="M210 60 L232 58" stroke="#C59B27" stroke-width="3"/><circle cx="236" cy="52" r="3" fill="#C59B27"/>
    <g class="leg c"><path d="M206 84 L214 130" stroke="#8B5430" stroke-width="7" stroke-linecap="round"/></g>
    <g class="leg b"><path d="M150 86 L146 130" stroke="#8B5430" stroke-width="7" stroke-linecap="round"/></g>
-   <!-- kendali & tiang -->
    <path d="M214 60 Q170 40 100 60" stroke="#8C6910" stroke-width="1.5"/>
    <path d="M130 80 L84 92" stroke="#8C6910" stroke-width="4"/>
-   <!-- kereta -->
    <path d="M30 98 H100 L96 70 H36Z" fill="#B86B4B" stroke="#8C6910" stroke-width="2"/>
    <path d="M34 70 Q66 26 98 70Z" fill="#3E6B52" stroke="#8C6910" stroke-width="2"/>
    <path d="M44 70 V98M88 70V98" stroke="#E6C15A" stroke-width="2"/>
@@ -265,8 +269,8 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
    <g stroke="#E6C15A" stroke-width="2"><path d="M30 70 L26 82M100 70 L104 82"/></g>
    <circle cx="26" cy="86" r="4" fill="#C59B27"/><circle cx="104" cy="86" r="4" fill="#C59B27"/>
    </g>
-   <g class="wheel" style="transform-origin:62px 112px"><circle cx="62" cy="112" r="21" stroke="#8C6910" stroke-width="4" fill="none"/><path d="M62 91V133M41 112H83M47 97L77 127M77 97L47 127" stroke="#C59B27" stroke-width="2"/></g>
-   <g class="wheel" style="transform-origin:106px 120px"><circle cx="106" cy="120" r="13" stroke="#8C6910" stroke-width="3" fill="none"/><path d="M106 107V133M93 120H119" stroke="#C59B27" stroke-width="2"/></g>
+   <g class="wheel"><circle cx="62" cy="112" r="21" stroke="#8C6910" stroke-width="4" fill="none"/><path d="M62 91V133M41 112H83M47 97L77 127M77 97L47 127" stroke="#C59B27" stroke-width="2"/></g>
+   <g class="wheel"><circle cx="106" cy="120" r="13" stroke="#8C6910" stroke-width="3" fill="none"/><path d="M106 107V133M93 120H119" stroke="#C59B27" stroke-width="2"/></g>
   </svg>
  </div>
 </section>
@@ -297,7 +301,6 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  <svg class="gamelan" viewBox="0 0 340 170" fill="none">
   <rect x="10" y="118" width="250" height="14" rx="6" fill="#8C6910"/><rect x="22" y="130" width="8" height="30" fill="#6B4A10"/><rect x="240" y="130" width="8" height="30" fill="#6B4A10"/>
   <g id="gongs"></g>
-  <!-- gong besar -->
   <rect x="270" y="8" width="64" height="6" rx="3" fill="#6B4A10"/><path d="M278 14V30M326 14V30" stroke="#8C6910" stroke-width="3"/>
   <g class="gong" data-n="6"><circle cx="302" cy="76" r="46" fill="url(#gld)" stroke="#8C6910" stroke-width="3"/><circle cx="302" cy="76" r="30" fill="none" stroke="#8C6910" stroke-width="2"/><circle cx="302" cy="76" r="12" fill="#E6C15A" stroke="#8C6910" stroke-width="2"/></g>
   <g class="mallet"><rect x="150" y="30" width="5" height="52" rx="2" fill="#6B4A10" transform="rotate(35 152 82)"/><circle cx="140" cy="38" r="8" fill="#B86B4B"/></g>
@@ -318,7 +321,7 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
    <textarea id="ms" rows="3" class="in" placeholder="Tulis doa terbaik untuk pengantin..." required></textarea>
    <button class="btn" style="width:100%;justify-content:center">✉ Kirim Doa Restu</button>
   </form>
-  <div id="feed" style="margin-top:1.6rem;max-height:280px;overflow-y:auto"><div class="wish"><strong>Keluarga Besar Priangan</strong> <small style="color:var(--gold-d)">• Hadir</small><p style="font-size:.9rem">Wilujeng ngambah sagara rumah tangga Nazwa & Luthfi. Mugia sing jadi kulawarga nu sakinah, mawaddah, warahmah.</p></div></div>
+  <div id="feed" style="margin-top:1.6rem;max-height:280px;overflow-y:auto"><div class="wish"><strong>Keluarga Besar Priangan</strong> <small style="color:var(--gold-d)">• Hadir</small><p style="font-size:.9rem">Wilujeng ngambah sagara rumah tangga Luthfiani & Fakhri. Mugia sing jadi kulawarga nu sakinah, mawaddah, warahmah.</p></div></div>
  </div>
 </section>
 
@@ -327,17 +330,18 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  <span class="badge">Tanda Kasih</span>
  <h2 class="h2 script">Amplop Digital</h2>
  <p style="color:var(--muted);max-width:540px;margin:0 auto 1.6rem">Kehadiran dan doa restu Bapak/Ibu/Saudara/i merupakan kado terindah bagi kami. Namun apabila ingin memberikan tanda kasih, dapat melalui:</p>
- <div class="sunda-card" style="max-width:440px;margin:0 auto"><div style="font-size:2rem">🏦</div><h3 class="serif" style="font-size:1.6rem">Bank BCA</h3><p id="rek" style="font-size:1.5rem;font-weight:700;letter-spacing:2px;color:var(--gold-d)">1234567890</p><p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem">a.n. Nazwa / Luthfi</p><button class="btn" id="cp" onclick="copyRek()" style="padding:.6rem 1.4rem;font-size:.85rem">⧉ Salin Rekening</button></div>
+ <div class="sunda-card" style="max-width:440px;margin:0 auto"><div style="font-size:2rem">🏦</div><h3 class="serif" style="font-size:1.6rem">Bank BCA</h3><p id="rek" style="font-size:1.5rem;font-weight:700;letter-spacing:2px;color:var(--gold-d)">1234567890</p><p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem">a.n. Luthfiani / Fakhri</p><button class="btn" type="button" id="cp" onclick="copyRek()" style="padding:.6rem 1.4rem;font-size:.85rem">⧉ Salin Rekening</button></div>
 </section>
 
-<!-- PENUTUP: CANDI MENUTUP + KUJANG -->
+<!-- PENUTUP -->
 <div class="tunnel close" id="t-close">
  <div class="stage" style="background:linear-gradient(180deg,#F6E8CF,#FFF3DA 50%,#F1DDB4)">
   <div class="sun" style="top:auto;bottom:6%"></div>
+  <svg class="cir" id="cir2" viewBox="0 0 420 200"><use href="#ciremai"/></svg><div class="mist"></div>
   <svg class="mount" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#E5D3B3" fill-opacity=".7" d="M0,256L120,240C240,224,480,192,720,197C960,203,1200,245,1320,267L1440,288L1440,320L0,320Z"/></svg>
   <div class="close-text" id="close-text">
    <span class="badge">Hatur Nuhun</span>
-   <h2 class="script" style="font-size:clamp(3rem,14vw,4.6rem);line-height:1.1">Nazwa & Luthfi</h2>
+   <h2 class="script" style="font-size:clamp(3rem,14vw,4.6rem);line-height:1.1">Luthfiani & Fakhri</h2>
    <p style="color:var(--muted);max-width:420px;margin:.4rem auto 0">Hatur nuhun kana kasumpingan sareng pidua ti sadayana. Wilujeng sumping, wilujeng tepang deui.</p>
   </div>
   <div class="gz" id="gz-close">
@@ -348,9 +352,22 @@ section{padding:4.5rem 1.2rem;max-width:980px;margin:0 auto;text-align:center;po
  </div>
 </div>
 
+<!-- SCRIPT 1: tombol buka (dipisah agar tidak ikut gagal jika script lain error) -->
+<script>
+function openInvite(){
+ document.body.classList.remove('locked');
+ var c=document.getElementById('cover'); if(c)c.classList.add('gone');
+ try{startShow()}catch(e){console.error(e)}
+}
+(function(){
+ try{var q=new URLSearchParams(location.search).get('to');if(q)document.getElementById('guest').textContent=q}catch(e){}
+})();
+</script>
+
+<!-- SCRIPT 2: animasi & interaksi -->
 <script>
 const $=id=>document.getElementById(id);
-const q=new URLSearchParams(location.search).get('to'); if(q)$('guest').textContent=q;
+const sm=x=>x*x*(3-2*x);
 
 /* Gerbang candi: p = 0 tertutup, 1 terbuka penuh */
 function setGate(l,r,p){
@@ -360,16 +377,18 @@ function setGate(l,r,p){
  l.style.opacity=r.style.opacity=op;
 }
 function prog(el){const r=el.getBoundingClientRect(),m=el.offsetHeight-innerHeight;return m>0?Math.min(Math.max(-r.top/m,0),1):0}
+const smooth={o:0,c:0};
 function onScroll(){
- const p=prog($('t-open'));
+ const p=smooth.o, c=smooth.c;
  setGate($('g-l'),$('g-r'),p);
  $('reveal').style.transform=`scale(${.82+Math.min(p*1.3,1)*.18})`;
  $('reveal').style.opacity=.35+Math.min(p*1.4,1)*.65;
  $('clouds').style.transform=`translateY(-${p*60}px) scale(${1+p*.2})`;
  $('hint').style.opacity=p>.2?0:1;
- // penutup: gerbang menutup kembali, kujang menyilang
- const c=prog($('t-close')), open=1-Math.min(c*1.25,1);
- setGate($('c-l'),$('c-r'),open);
+ $('cir').style.transform=`translateX(-50%) translateY(${p*55}px) scale(${1+p*.18})`;
+ $('cir2').style.transform=`translateX(-50%) translateY(${(1-c)*40}px)`;
+ $('landed').style.opacity=p>.02?Math.max(0,1-p*5):'';
+ setGate($('c-l'),$('c-r'),1-Math.min(c*1.25,1));
  const k=$('kx'), kp=Math.max((c-.7)/.3,0);
  k.style.opacity=Math.min(kp,1); k.style.transform=`translate(-50%,-50%) scale(${.5+kp*.5}) rotate(${(1-kp)*40}deg)`;
  $('close-text').style.opacity=1-Math.max(0,(c-.35)*1.6);
@@ -378,33 +397,40 @@ function fitGates(){
  const m=innerWidth<768;
  [['g-l','xMaxYMax'],['c-l','xMaxYMax'],['g-r','xMinYMax'],['c-r','xMinYMax']].forEach(([id,a])=>$(id).setAttribute('preserveAspectRatio',m?'none':a+' meet'));
 }
-fitGates();
-addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',()=>{fitGates();onScroll()}); onScroll();
+fitGates();addEventListener('resize',fitGates);onScroll();
+(function raf(){
+ try{
+  const a=prog($('t-open')),b=prog($('t-close'));
+  if(Math.abs(a-smooth.o)+Math.abs(b-smooth.c)>.0004){smooth.o+=(a-smooth.o)*.12;smooth.c+=(b-smooth.c)*.12;onScroll()}
+ }catch(e){}
+ requestAnimationFrame(raf);
+})();
 
-/* Daun terbang saat undangan dibuka */
-function flyLeaves(){
- const cols=['#3E6B52','#5C8A4E','#8DAA5B','#C59B27','#B86B4B'];
- for(let i=0;i<26;i++){
-  const d=document.createElement('div'), s=18+Math.random()*26, y=Math.random()*innerHeight, ey=y-innerHeight*(.2+Math.random()*.5);
-  d.style.cssText=`position:fixed;left:0;top:0;width:${s}px;height:${s}px;z-index:1000;pointer-events:none`;
-  d.innerHTML=`<svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M2 22C2 10 10 2 22 2c0 12-8 20-20 20z" fill="${cols[i%5]}"/><path d="M3 21L16 8" stroke="#fff" stroke-opacity=".5"/></svg>`;
-  document.body.appendChild(d);
-  const rot=360+Math.random()*540, dur=2600+Math.random()*2400, sw=40+Math.random()*60;
-  d.animate([
-   {transform:`translate(-12vw,${y}px) rotate(0deg)`,opacity:0},
-   {transform:`translate(25vw,${y-sw}px) rotate(${rot*.3}deg)`,opacity:1,offset:.25},
-   {transform:`translate(55vw,${y+sw-100}px) rotate(${rot*.65}deg)`,opacity:1,offset:.6},
-   {transform:`translate(112vw,${ey}px) rotate(${rot}deg)`,opacity:0}
-  ],{duration:dur,delay:Math.random()*900,easing:'ease-in-out',fill:'forwards'}).onfinish=()=>d.remove();
- }
+/* Satu bunga melayang menuju gapura */
+function flowerFlight(){
+ const f=$('flower1'),W=innerWidth,H=innerHeight;
+ f.style.display='block';
+ const a=f.animate([
+  {transform:`translate(${-.12*W}px,${.1*H}px) rotate(0deg) scale(.8)`,offset:0},
+  {transform:`translate(${.22*W}px,${.38*H}px) rotate(220deg) scale(1.3)`,offset:.32},
+  {transform:`translate(${.66*W}px,${.18*H}px) rotate(440deg) scale(1.5)`,offset:.64},
+  {transform:`translate(${W/2-27}px,${H*.95-52}px) rotate(660deg) scale(1)`,offset:1}
+ ],{duration:2500,easing:'ease-in-out',fill:'forwards'});
+ a.onfinish=()=>{f.style.display='none';$('landed').classList.add('show')};
+}
+function startShow(){
+ playing=true;$('music').classList.remove('paused');
+ try{ctx();loop()}catch(e){}
+ try{flowerFlight()}catch(e){$('landed').classList.add('show')}
+ $('gz-open').classList.add('play');
+ setTimeout(()=>{try{scrollTo({top:innerHeight*.9,behavior:'smooth'})}catch(e){}},3300);
 }
 
-/* Gamelan: sintesis nada pelog/degung + visual gong */
+/* Gamelan: sintesis nada + visual gong */
 let ac,playing=false,timer,idx=0;
 const notes=[293.66,329.63,392,440,523.25,587.33,110];
-const gongsG=$('gongs');
 [0,1,2,3,4].forEach(i=>{
- gongsG.insertAdjacentHTML('beforeend',`<g class="gong" data-n="${i}"><circle cx="${42+i*50}" cy="${96-i*6}" r="${22-i}" fill="url(#gld)" stroke="#8C6910" stroke-width="2.5"/><circle cx="${42+i*50}" cy="${96-i*6}" r="${8-i*.5}" fill="#E6C15A" stroke="#8C6910" stroke-width="2"/></g>`);
+ $('gongs').insertAdjacentHTML('beforeend',`<g class="gong" data-n="${i}"><circle cx="${42+i*50}" cy="${96-i*6}" r="${22-i}" fill="url(#gld)" stroke="#8C6910" stroke-width="2.5"/><circle cx="${42+i*50}" cy="${96-i*6}" r="${8-i*.5}" fill="#E6C15A" stroke="#8C6910" stroke-width="2"/></g>`);
 });
 const gongEls=[...document.querySelectorAll('.gong')];
 function ctx(){if(!ac)ac=new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();return ac}
@@ -417,25 +443,17 @@ function strike(n){
   o.connect(g).connect(a.destination);o.start(t);o.stop(t+len);
  });
  const el=gongEls.find(e=>+e.dataset.n===(big?6:Math.min(n,4)));
- if(el){el.classList.remove('hit');void el.getBBox();el.classList.add('hit')}
+ if(el){el.classList.remove('hit');void el.getBoundingClientRect();el.classList.add('hit')}
 }
-gongEls.forEach(e=>e.addEventListener('click',()=>strike(+e.dataset.n)));
+gongEls.forEach(e=>e.addEventListener('click',()=>{try{strike(+e.dataset.n)}catch(err){}}));
 const seq=[0,2,3,4,3,2,1,2,0,1,2,4,5,4,2,1];
 function loop(){
  clearInterval(timer);
- timer=setInterval(()=>{if(!playing)return;const n=seq[idx%seq.length];strike(Math.min(n,5));if(idx%8===0)strike(6);idx++},950);
+ timer=setInterval(()=>{if(!playing)return;try{const n=seq[idx%seq.length];strike(Math.min(n,5));if(idx%8===0)strike(6);idx++}catch(e){}},950);
 }
 function toggleMusic(){
  playing=!playing;$('music').classList.toggle('paused',!playing);
- if(playing){ctx();loop()}
-}
-function openInvite(){
- $('cover').classList.add('gone');
- document.body.classList.remove('locked');
- flyLeaves();
- $('gz-open').classList.add('play');
- playing=true;$('music').classList.remove('paused');ctx();loop();
- setTimeout(()=>scrollTo({top:innerHeight*.85,behavior:'smooth'}),3600);
+ if(playing){try{ctx();loop()}catch(e){}}
 }
 
 /* Hitung mundur */
@@ -467,9 +485,9 @@ $('f').addEventListener('submit',e=>{
  e.preventDefault();
  const w=document.createElement('div');w.className='wish';
  const s=document.createElement('strong');s.textContent=$('nm').value;
- const sm=document.createElement('small');sm.style.color='var(--gold-d)';sm.textContent=' • '+$('st').value;
+ const sm2=document.createElement('small');sm2.style.color='var(--gold-d)';sm2.textContent=' • '+$('st').value;
  const p=document.createElement('p');p.style.fontSize='.9rem';p.textContent=$('ms').value;
- w.append(s,sm,p);$('feed').prepend(w);e.target.reset();
+ w.append(s,sm2,p);$('feed').prepend(w);e.target.reset();
 });
 function copyRek(){
  try{navigator.clipboard.writeText($('rek').textContent)}catch(e){}
