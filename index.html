@@ -3,28 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Wedding of Nazwa & Luthfi - 11.11.2026</title>
-  
+  <title>The Sundanese Royal Wedding of Nazwa & Luthfi - 11.11.2026</title>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
-      --bg-cream: #FFFDF9;
-      --bg-blush: #FFF5F5;
-      --primary-gold: #C89D54;
-      --primary-gold-light: #E6C786;
-      --accent-rose: #E89999;
-      --accent-sage: #9CAF88;
-      --text-dark: #3D352E;
-      --text-muted: #7A6F66;
+      --cream-bg: #FFFDF8;
+      --cream-soft: #FDF6E9;
+      --gold-primary: #C59B27;
+      --gold-bright: #E6C15A;
+      --gold-dark: #8C6910;
+      --terracotta: #B86B4B;
+      --emerald-sunda: #3E6B52;
+      --text-main: #3A2E25;
+      --text-muted: #78685A;
       --white: #FFFFFF;
-      --shadow: 0 12px 35px rgba(200, 157, 84, 0.12);
+      --shadow-gold: 0 15px 40px rgba(197, 155, 39, 0.16);
     }
 
     * {
@@ -39,8 +40,8 @@
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-cream);
-      color: var(--text-dark);
+      background-color: var(--cream-bg);
+      color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.7;
     }
@@ -49,607 +50,767 @@
       overflow: hidden;
     }
 
-    h1, h2, h3 {
+    .font-royal {
+      font-family: 'Cinzel Decorative', serif;
+    }
+
+    .font-serif {
       font-family: 'Cormorant Garamond', serif;
     }
 
-    .script-font {
+    .font-script {
       font-family: 'Great Vibes', cursive;
-      color: var(--primary-gold);
+      color: var(--gold-primary);
       font-weight: 400;
     }
 
-    /* Canvas Kelopak Bunga */
-    #petals-canvas {
+    /* Ornamen Batik Mega Mendung / Sunda Halus di Background */
+    .batik-pattern {
+      background-image: radial-gradient(circle at 20% 20%, rgba(197, 155, 39, 0.07) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(184, 107, 75, 0.06) 0%, transparent 50%);
+    }
+
+    /* Canvas Bunga Melati Jatuh */
+    #jasmine-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 99;
+      z-index: 90;
     }
 
-    /* Layar Pembuka (Cover Overlay) */
-    #cover-overlay {
+    /* ================= OVERLAY PEMBUKA (SAMPUL) ================= */
+    #cover-gate {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #FFFDF9 0%, #FFEFEF 100%);
-      z-index: 1000;
+      z-index: 999;
+      background: radial-gradient(circle at center, #FFFDF9 0%, #F7E8CE 100%);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 2rem;
-      transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease;
+      padding: 1.5rem;
+      transition: opacity 1.1s ease, visibility 1.1s ease;
     }
 
-    #cover-overlay.open {
-      transform: translateY(-100%);
+    #cover-gate.hidden {
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
     }
 
-    /* Animasi Ilustrasi Pasangan */
-    .couple-illustration {
-      width: 250px;
-      height: 250px;
-      margin: 0 auto 1.2rem;
-      position: relative;
-      animation: floatCouple 4s ease-in-out infinite;
+    .gunungan-ornament {
+      width: 130px;
+      margin-bottom: 1rem;
+      animation: floatSlow 4s ease-in-out infinite;
+      filter: drop-shadow(0 8px 15px rgba(197, 155, 39, 0.3));
     }
 
-    @keyframes floatCouple {
-      0%, 100% { transform: translateY(0px); }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    .heart-pulse {
-      animation: pulseHeart 1.8s infinite ease-in-out;
-      transform-origin: center;
-    }
-
-    @keyframes pulseHeart {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.25); opacity: 1; }
-    }
-
-    .sway-left {
-      animation: swayLeft 3.5s ease-in-out infinite;
-      transform-origin: bottom center;
-    }
-
-    .sway-right {
-      animation: swayRight 3.5s ease-in-out infinite;
-      transform-origin: bottom center;
-    }
-
-    @keyframes swayLeft {
-      0%, 100% { transform: rotate(-1.5deg); }
-      50% { transform: rotate(2deg); }
-    }
-
-    @keyframes swayRight {
-      0%, 100% { transform: rotate(1.5deg); }
-      50% { transform: rotate(-2deg); }
-    }
-
-    /* Tombol Utama */
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary-gold), #B3873E);
+    .btn-sunda {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
       color: var(--white);
-      border: none;
-      padding: 0.9rem 2.2rem;
+      border: 1px solid var(--gold-bright);
+      padding: 0.9rem 2.4rem;
       border-radius: 50px;
-      font-size: 0.95rem;
       font-weight: 600;
+      font-size: 0.95rem;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(200, 157, 84, 0.35);
-      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(140, 105, 16, 0.35);
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
       text-decoration: none;
-      margin-top: 1.2rem;
+      transition: all 0.35s ease;
     }
 
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(200, 157, 84, 0.5);
+    .btn-sunda:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(140, 105, 16, 0.5);
     }
 
-    /* Layout Section Umum */
-    section {
-      padding: 5rem 1.5rem;
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
+    /* ================= 3D SCROLL-THROUGH CANDI SCENE ================= */
+    .scroll-tunnel-wrapper {
+      height: 270vh; /* Memberikan ruang scroll untuk efek menembus candi */
       position: relative;
     }
 
-    .section-subtitle {
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 0.8rem;
-      color: var(--primary-gold);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
+    .sticky-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      perspective: 1000px;
+      background: linear-gradient(180deg, #FFF8EB 0%, #FFFDF8 65%, #F9EFE0 100%);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      background: radial-gradient(circle at top, #FFF6F6, var(--bg-cream));
-      padding-top: 3rem;
-    }
-
-    .hero-names {
-      font-size: 4.2rem;
-      line-height: 1.15;
-      margin: 0.5rem 0;
-    }
-
-    .hero-date {
-      font-size: 1.25rem;
-      letter-spacing: 5px;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-    }
-
-    /* Countdown Timer */
-    .countdown-container {
-      display: flex;
-      gap: 1rem;
       justify-content: center;
+    }
+
+    /* Latar Belakang Gunung Priangan & Matahari Cerah */
+    .stage-sky-sun {
+      position: absolute;
+      top: 10%;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,223,138,0.6) 0%, rgba(255,248,235,0) 70%);
+      z-index: 1;
+    }
+
+    .stage-mountains {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 45%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Konten Inti Undangan yang Muncul dari Balik Candi */
+    .hero-inner-reveal {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 1.5rem;
+      max-width: 720px;
+      transform: scale(0.82);
+      opacity: 0.35;
+      transition: transform 0.1s linear, opacity 0.1s linear;
+    }
+
+    /* Awan Kiri & Kanan */
+    .cloud-layer {
+      position: absolute;
+      top: 12%;
+      width: 100%;
+      z-index: 6;
+      pointer-events: none;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5%;
+    }
+
+    /* Candi Bentar Kiri & Kanan (3D Foreground Gate) */
+    .candi-gate {
+      position: absolute;
+      bottom: -2%;
+      height: 96vh;
+      width: 46vw;
+      max-width: 520px;
+      z-index: 10;
+      pointer-events: none;
+      transform-origin: bottom center;
+      will-change: transform, opacity, filter;
+      filter: drop-shadow(0 20px 35px rgba(58, 46, 37, 0.25));
+    }
+
+    .candi-left {
+      left: 0;
+      transform-origin: bottom left;
+    }
+
+    .candi-right {
+      right: 0;
+      transform-origin: bottom right;
+    }
+
+    /* Petunjuk Scroll */
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--gold-bright);
+      padding: 0.55rem 1.3rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      box-shadow: var(--shadow-gold);
+      animation: bounceHint 2s infinite;
+    }
+
+    @keyframes bounceHint {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -8px); }
+    }
+
+    /* Animasi Karakter Pengantin Sunda */
+    .sunda-couple-svg {
+      width: 290px;
+      height: 270px;
+      margin: 0 auto 0.5rem;
+      filter: drop-shadow(0 12px 24px rgba(197, 155, 39, 0.22));
+    }
+
+    .bride-anim {
+      animation: gentleSwayLeft 3.8s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    .groom-anim {
+      animation: gentleSwayRight 3.8s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    .melati-swing {
+      animation: swingMelati 2.4s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    @keyframes gentleSwayLeft {
+      0%, 100% { transform: rotate(-1.2deg); }
+      50% { transform: rotate(1.5deg); }
+    }
+
+    @keyframes gentleSwayRight {
+      0%, 100% { transform: rotate(1.2deg); }
+      50% { transform: rotate(-1.5deg); }
+    }
+
+    @keyframes swingMelati {
+      0%, 100% { transform: rotate(-4deg); }
+      50% { transform: rotate(4deg); }
+    }
+
+    /* ================= SECTION STANDAR ================= */
+    section {
+      padding: 5.5rem 1.5rem;
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 25;
+    }
+
+    .sunda-badge {
+      display: inline-block;
+      background: var(--cream-soft);
+      border: 1px solid var(--gold-bright);
+      color: var(--gold-dark);
+      padding: 0.35rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-heading {
+      font-size: 3.1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Ornamen Pembatas Sunda */
+    .sunda-divider {
+      width: 220px;
+      height: 28px;
+      margin: 0.5rem auto 2rem;
+    }
+
+    /* Countdown */
+    .countdown-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
       flex-wrap: wrap;
-      margin: 2.5rem 0;
+      margin: 2rem 0;
     }
 
-    .countdown-box {
+    .cd-card {
       background: var(--white);
-      border: 1px solid rgba(200, 157, 84, 0.25);
+      border: 1px solid var(--gold-bright);
       border-radius: 18px;
-      width: 85px;
+      width: 88px;
       padding: 1rem 0.5rem;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-gold);
+      position: relative;
+      overflow: hidden;
     }
 
-    .countdown-box span {
+    .cd-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold-primary), var(--terracotta));
+    }
+
+    .cd-card span {
       display: block;
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: var(--primary-gold);
       font-family: 'Cormorant Garamond', serif;
+      color: var(--gold-dark);
     }
 
-    .countdown-box small {
+    .cd-card small {
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--text-muted);
     }
 
-    /* Profil Mempelai */
+    /* Kartu Mempelai */
     .couple-grid {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       gap: 2rem;
       align-items: center;
-      margin-top: 3rem;
+      margin-top: 2.5rem;
     }
 
-    .couple-card {
+    .sunda-card {
       background: var(--white);
-      padding: 2.5rem 1.8rem;
       border-radius: 28px;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(200, 157, 84, 0.18);
+      padding: 2.6rem 1.8rem;
+      border: 1px solid rgba(197, 155, 39, 0.3);
+      box-shadow: var(--shadow-gold);
+      position: relative;
       transition: transform 0.35s ease;
     }
 
-    .couple-card:hover {
-      transform: translateY(-6px);
+    .sunda-card:hover {
+      transform: translateY(-8px);
     }
 
-    .avatar-wrap {
-      width: 155px;
-      height: 155px;
-      margin: 0 auto 1.5rem;
+    .portrait-circle {
+      width: 165px;
+      height: 165px;
+      margin: 0 auto 1.4rem;
       border-radius: 50%;
-      background: linear-gradient(135deg, #FFF0F0, #FDF7EC);
-      border: 3px solid var(--primary-gold-light);
+      background: radial-gradient(circle, #FFFDF8 0%, #F7E6C4 100%);
+      border: 3px solid var(--gold-primary);
+      padding: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(232, 153, 153, 0.2);
+      box-shadow: 0 10px 25px rgba(197, 155, 39, 0.25);
     }
 
-    .couple-name {
-      font-size: 2.2rem;
-      color: var(--text-dark);
-      margin-bottom: 0.4rem;
-    }
-
-    .couple-parents {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .ampersand {
-      font-size: 4.5rem;
-      color: var(--primary-gold);
-    }
-
-    /* Detail Acara & Lokasi */
-    .event-cards {
+    /* Detail Acara & Peta */
+    .event-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
 
-    .event-card {
-      background: var(--white);
-      padding: 2.5rem 2rem;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      border-top: 4px solid var(--primary-gold);
-    }
-
-    .event-icon {
-      width: 60px;
-      height: 60px;
-      background: var(--bg-blush);
-      color: var(--primary-gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin: 0 auto 1.2rem;
-    }
-
-    .venue-box {
-      background: linear-gradient(135deg, #FFF9F5, #FFFFFF);
-      border: 1px solid rgba(200, 157, 84, 0.3);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
+    .venue-panel {
+      background: linear-gradient(135deg, #FFFDF9 0%, #FDF4E3 100%);
+      border: 2px solid var(--gold-bright);
+      border-radius: 28px;
+      padding: 2.8rem 2rem;
       margin-top: 2.5rem;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-gold);
     }
 
-    .map-container {
-      margin-top: 1.5rem;
-      border-radius: 16px;
+    .map-frame {
+      margin-top: 1.8rem;
+      border-radius: 18px;
       overflow: hidden;
-      height: 300px;
-      border: 1px solid rgba(200, 157, 84, 0.2);
+      height: 320px;
+      border: 2px solid var(--gold-bright);
     }
 
-    /* Form RSVP & Ucapan */
-    .rsvp-box {
+    /* Form RSVP */
+    .rsvp-container {
       background: var(--white);
+      border-radius: 28px;
       padding: 2.5rem 2rem;
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      max-width: 600px;
+      border: 1px solid rgba(197, 155, 39, 0.3);
+      box-shadow: var(--shadow-gold);
+      max-width: 620px;
       margin: 0 auto;
       text-align: left;
     }
 
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .form-control {
+    .input-field {
       width: 100%;
-      padding: 0.85rem 1rem;
-      border: 1px solid #E5DCD3;
+      padding: 0.9rem 1rem;
+      border: 1px solid #E3D5C1;
       border-radius: 12px;
+      background: var(--cream-bg);
       font-family: inherit;
       font-size: 0.95rem;
-      background: var(--bg-cream);
+      margin-top: 0.35rem;
+      margin-bottom: 1.1rem;
     }
 
-    .form-control:focus {
+    .input-field:focus {
       outline: none;
-      border-color: var(--primary-gold);
+      border-color: var(--gold-primary);
     }
 
-    .wishes-list {
-      margin-top: 2rem;
-      max-height: 280px;
-      overflow-y: auto;
-      padding-right: 0.5rem;
-    }
-
-    .wish-item {
-      background: var(--bg-cream);
+    .wish-card {
+      background: var(--cream-soft);
       padding: 1rem 1.2rem;
       border-radius: 14px;
       margin-bottom: 0.8rem;
-      border-left: 3px solid var(--primary-gold);
+      border-left: 4px solid var(--gold-primary);
     }
 
-    /* Amplop Digital */
-    .gift-card {
-      background: linear-gradient(135deg, #FFFDF9 0%, #FFF3E6 100%);
-      border: 1px solid var(--primary-gold-light);
-      padding: 2rem;
-      border-radius: 20px;
-      max-width: 450px;
-      margin: 1.5rem auto 0;
-      box-shadow: var(--shadow);
+    /* Tombol Musik Kacapi Suling */
+    .music-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+      color: var(--white);
+      border: 2px solid var(--white);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+      cursor: pointer;
+      z-index: 950;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      animation: spinDisc 9s linear infinite;
     }
 
-    /* Animasi Scroll Reveal */
-    .reveal {
+    .music-fab.paused {
+      animation-play-state: paused;
+      background: #8D8277;
+    }
+
+    @keyframes spinDisc {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Scroll Reveal */
+    .reveal-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
+      transform: translateY(35px);
+      transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .reveal.active {
+    .reveal-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Tombol Musik Melayang */
-    .music-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--primary-gold);
-      color: var(--white);
-      border: none;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-      cursor: pointer;
-      z-index: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      animation: spinSlow 8s linear infinite;
-    }
-
-    .music-btn.paused {
-      animation-play-state: paused;
-      background: #9E948B;
-    }
-
-    @keyframes spinSlow {
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Responsif Mobile */
     @media (max-width: 768px) {
       .couple-grid {
         grid-template-columns: 1fr;
-        gap: 1.2rem;
       }
-      .hero-names {
-        font-size: 3.1rem;
+      .candi-gate {
+        width: 54vw;
+        height: 85vh;
       }
-      .section-title {
+      .section-heading {
         font-size: 2.4rem;
       }
     }
   </style>
 </head>
-<body class="locked">
+<body class="locked batik-pattern">
 
-  <!-- Efek Kelopak Bunga Jatuh -->
-  <canvas id="petals-canvas"></canvas>
+  <!-- Kelopak Melati Berjatuhan -->
+  <canvas id="jasmine-canvas"></canvas>
 
-  <!-- COVER PEMBUKA -->
-  <div id="cover-overlay">
-    <p class="section-subtitle">The Wedding Celebration Of</p>
-    
-    <!-- Ilustrasi Animasi Mempelai Pria & Wanita -->
-    <div class="couple-illustration">
-      <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Lingkaran Latar Cerah -->
-        <circle cx="120" cy="125" r="95" fill="#FFF0F0" stroke="#E6C786" stroke-width="2" stroke-dasharray="6 4"/>
-        
-        <!-- Hati Melayang (Animasi) -->
-        <path class="heart-pulse" d="M120 42 C115 32, 100 34, 100 45 C100 56, 120 66, 120 72 C120 66, 140 56, 140 45 C140 34, 125 32, 120 42 Z" fill="#E89999"/>
+  <!-- ================= LAYAR SAMPUL DEPAN ================= -->
+  <div id="cover-gate">
+    <!-- Gunungan / Ornamen Sunda Emas -->
+    <svg class="gunungan-ornament" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M60 8 C85 45, 110 85, 105 135 L15 135 C10 85, 35 45, 60 8 Z" fill="url(#goldGrad)" stroke="#8C6910" stroke-width="2"/>
+      <path d="M60 25 C78 55, 95 85, 92 128 L28 128 C25 85, 42 55, 60 25 Z" fill="#FFFDF8" opacity="0.85"/>
+      <circle cx="60" cy="85" r="18" fill="#C59B27" opacity="0.25"/>
+      <path d="M60 45 L60 125 M42 85 L78 85" stroke="#C59B27" stroke-width="2"/>
+      <defs>
+        <linearGradient id="goldGrad" x1="0" y1="0" x2="120" y2="150" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#E6C15A"/>
+          <stop offset="50%" stop-color="#C59B27"/>
+          <stop offset="100%" stop-color="#8C6910"/>
+        </linearGradient>
+      </defs>
+    </svg>
 
-        <!-- Mempelai Wanita (Nazwa - Kiri) -->
-        <g class="sway-left">
-          <!-- Kerudung / Veil Putih -->
-          <path d="M58 105 Q85 75 112 105 L118 195 L52 195 Z" fill="#FFFFFF" opacity="0.9"/>
-          <!-- Gaun Pastel -->
-          <path d="M62 145 Q85 135 108 145 L115 205 L55 205 Z" fill="#FAD4D4" stroke="#E89999" stroke-width="1.5"/>
-          <!-- Kepala & Hijab/Rambut -->
-          <circle cx="85" cy="110" r="24" fill="#F9E5E5"/>
-          <circle cx="85" cy="112" r="19" fill="#FFE5D4"/>
-          <!-- Mahkota Bunga Emas -->
-          <circle cx="72" cy="94" r="4" fill="#C89D54"/>
-          <circle cx="85" cy="91" r="5" fill="#E89999"/>
-          <circle cx="98" cy="94" r="4" fill="#C89D54"/>
-          <!-- Wajah Tersenyum -->
-          <path d="M76 110 Q79 107 82 110" stroke="#4A3F35" stroke-width="2" stroke-linecap="round"/>
-          <path d="M88 110 Q91 107 94 110" stroke="#4A3F35" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="74" cy="115" r="3" fill="#F4A2A2" opacity="0.6"/>
-          <circle cx="96" cy="115" r="3" fill="#F4A2A2" opacity="0.6"/>
-          <path d="M81 118 Q85 123 89 118" stroke="#D16B6B" stroke-width="2" stroke-linecap="round"/>
-          <!-- Buket Bunga -->
-          <circle cx="95" cy="165" r="12" fill="#9CAF88"/>
-          <circle cx="91" cy="162" r="5" fill="#E89999"/>
-          <circle cx="99" cy="164" r="5" fill="#FFFDF9"/>
-          <circle cx="95" cy="170" r="4" fill="#C89D54"/>
-        </g>
+    <span class="sunda-badge">Wilujeng Sumping • Royal Sundanese Wedding</span>
+    <h1 class="font-script" style="font-size: 4rem; line-height: 1.1; margin: 0.4rem 0;">Nazwa & Luthfi</h1>
+    <p style="color: var(--text-muted); font-weight: 500; letter-spacing: 2px; margin-bottom: 1.4rem;">11 NOVEMBER 2026 • BANDUNG</p>
 
-        <!-- Mempelai Pria (Luthfi - Kanan) -->
-        <g class="sway-right">
-          <!-- Jas Cream / Gold Elegan -->
-          <path d="M128 142 Q155 132 182 142 L188 205 L122 205 Z" fill="#E8DEC8" stroke="#C89D54" stroke-width="1.5"/>
-          <!-- Kemeja & Dasi Kupu-kupu -->
-          <polygon points="147,140 163,140 155,165" fill="#FFFFFF"/>
-          <polygon points="148,144 155,148 148,152" fill="#C89D54"/>
-          <polygon points="162,144 155,148 162,152" fill="#C89D54"/>
-          <!-- Kepala & Rambut -->
-          <circle cx="155" cy="108" r="20" fill="#FFE5D4"/>
-          <path d="M134 102 Q145 80 172 90 Q178 98 174 106 Q160 94 136 105 Z" fill="#3D352E"/>
-          <!-- Wajah Tersenyum -->
-          <circle cx="148" cy="108" r="2" fill="#3D352E"/>
-          <circle cx="162" cy="108" r="2" fill="#3D352E"/>
-          <circle cx="144" cy="113" r="3" fill="#F4A2A2" opacity="0.5"/>
-          <circle cx="166" cy="113" r="3" fill="#F4A2A2" opacity="0.5"/>
-          <path d="M150 116 Q155 121 160 116" stroke="#3D352E" stroke-width="2" stroke-linecap="round"/>
-        </g>
-      </svg>
+    <div style="background: rgba(255,255,255,0.9); padding: 1.1rem 2.2rem; border-radius: 18px; border: 1px solid var(--gold-bright); margin-bottom: 1.5rem; box-shadow: var(--shadow-gold);">
+      <small style="color: var(--text-muted); display: block;">Kahatur Bapak/Ibu/Saderek:</small>
+      <strong id="guest-display" style="font-size: 1.2rem; color: var(--text-main);">Tamu Kehormatan</strong>
     </div>
 
-    <h1 class="script-font" style="font-size: 3.8rem;">Nazwa & Luthfi</h1>
-    <p style="color: var(--text-muted); font-weight: 500; margin-bottom: 1.5rem;">Rabu, 11 November 2026</p>
-
-    <div style="background: rgba(255,255,255,0.85); padding: 1.2rem 2rem; border-radius: 16px; border: 1px solid rgba(200,157,84,0.3);">
-      <small style="color: var(--text-muted); display: block;">Kepada Yth. Bapak/Ibu/Saudara/i:</small>
-      <strong id="guest-name" style="font-size: 1.2rem; color: var(--text-dark);">Tamu Kehormatan</strong>
-    </div>
-
-    <button class="btn-primary" onclick="openInvitation()">
-      <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
+    <button class="btn-sunda" onclick="enterGate()">
+      <i class="fa-solid fa-door-open"></i> Buka Gapura Undangan
     </button>
   </div>
 
-  <!-- TOMBOL MUSIK -->
-  <button id="music-toggle" class="music-btn paused" onclick="toggleMusic()" title="Putar/Jeda Musik">
+  <!-- Tombol Musik Nada Sunda -->
+  <button id="music-btn" class="music-fab paused" onclick="toggleSundaMusic()" title="Musik Kacapi Suling">
     <i class="fa-solid fa-music"></i>
   </button>
 
-  <!-- HERO SECTION -->
-  <header class="hero">
-    <p class="section-subtitle">Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
-    <h1 class="hero-names script-font">Nazwa & Luthfi</h1>
-    <p class="hero-date">11 . 11 . 2026</p>
+  <!-- ================= 3D SCROLL-THROUGH CANDI BENTAR ================= -->
+  <div class="scroll-tunnel-wrapper" id="tunnel-wrapper">
+    <div class="sticky-stage">
+      
+      <!-- Matahari & Gunung Priangan Cerah -->
+      <div class="stage-sky-sun"></div>
+      <svg class="stage-mountains" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#EFE3CE" fill-opacity="0.7" d="M0,224L80,197.3C160,171,320,117,480,128C640,139,800,213,960,229.3C1120,245,1280,203,1360,181.3L1440,160L1440,320L0,320Z"></path>
+        <path fill="#E5D3B3" fill-opacity="0.6" d="M0,256L120,240C240,224,480,192,720,197.3C960,203,1200,245,1320,266.7L1440,288L1440,320L0,320Z"></path>
+      </svg>
 
-    <p style="max-width: 580px; margin: 1.5rem auto 0; color: var(--text-muted); font-size: 0.95rem;">
-      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang." <br><strong>(QS. Ar-Rum: 21)</strong>
-    </p>
+      <!-- Awan Mega Mendung Cerah -->
+      <div class="cloud-layer" id="clouds-parallax">
+        <svg width="160" height="70" viewBox="0 0 160 70" fill="none">
+          <path d="M25 50 Q40 20 70 35 Q95 10 125 35 Q145 30 150 50 Z" fill="#FFFDF8" stroke="#E6C15A" stroke-width="2"/>
+        </svg>
+        <svg width="160" height="70" viewBox="0 0 160 70" fill="none">
+          <path d="M15 50 Q35 25 65 38 Q90 12 120 35 Q140 28 148 50 Z" fill="#FFFDF8" stroke="#E6C15A" stroke-width="2"/>
+        </svg>
+      </div>
 
-    <!-- Countdown Timer -->
-    <div class="countdown-container" id="countdown">
-      <div class="countdown-box"><span id="days">00</span><small>Hari</small></div>
-      <div class="countdown-box"><span id="hours">00</span><small>Jam</small></div>
-      <div class="countdown-box"><span id="minutes">00</span><small>Menit</small></div>
-      <div class="countdown-box"><span id="seconds">00</span><small>Detik</small></div>
+      <!-- CANDI BENTAR KIRI (Akan bergerak maju & membuka ke kiri saat di-scroll) -->
+      <svg class="candi-gate candi-left" id="candi-left" viewBox="0 0 320 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Struktur Candi Bertingkat -->
+        <polygon points="30,680 295,680 295,520 50,520" fill="#D5B88B" stroke="#8C6910" stroke-width="2"/>
+        <rect x="40" y="500" width="255" height="24" fill="#C59B27"/>
+        <polygon points="65,500 295,500 295,350 85,350" fill="#DEC49A" stroke="#8C6910" stroke-width="2"/>
+        <rect x="75" y="330" width="220" height="22" fill="#C59B27"/>
+        <polygon points="105,330 295,330 295,190 125,190" fill="#E6CFA8" stroke="#8C6910" stroke-width="2"/>
+        <rect x="115" y="170" width="180" height="20" fill="#C59B27"/>
+        <!-- Puncak Candi -->
+        <polygon points="150,170 295,170 295,70 185,70" fill="#D5B88B" stroke="#8C6910" stroke-width="2"/>
+        <polygon points="210,70 295,70 295,20 245,20" fill="#C59B27"/>
+        <!-- Ukiran Relief Emas -->
+        <rect x="110" y="555" width="145" height="90" rx="8" fill="#B86B4B" opacity="0.25" stroke="#8C6910" stroke-width="2"/>
+        <circle cx="182" cy="600" r="24" fill="#C59B27" opacity="0.45"/>
+        <rect x="140" y="385" width="115" height="80" rx="6" fill="#B86B4B" opacity="0.25" stroke="#8C6910" stroke-width="2"/>
+        <rect x="175" y="220" width="85" height="75" rx="6" fill="#C59B27" opacity="0.3" stroke="#8C6910" stroke-width="2"/>
+      </svg>
+
+      <!-- CANDI BENTAR KANAN (Akan bergerak maju & membuka ke kanan saat di-scroll) -->
+      <svg class="candi-gate candi-right" id="candi-right" viewBox="0 0 320 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Struktur Candi Bertingkat (Mirror) -->
+        <polygon points="290,680 25,680 25,520 270,520" fill="#D5B88B" stroke="#8C6910" stroke-width="2"/>
+        <rect x="25" y="500" width="255" height="24" fill="#C59B27"/>
+        <polygon points="255,500 25,500 25,350 235,350" fill="#DEC49A" stroke="#8C6910" stroke-width="2"/>
+        <rect x="25" y="330" width="220" height="22" fill="#C59B27"/>
+        <polygon points="215,330 25,330 25,190 195,190" fill="#E6CFA8" stroke="#8C6910" stroke-width="2"/>
+        <rect x="25" y="170" width="180" height="20" fill="#C59B27"/>
+        <!-- Puncak Candi -->
+        <polygon points="170,170 25,170 25,70 135,70" fill="#D5B88B" stroke="#8C6910" stroke-width="2"/>
+        <polygon points="110,70 25,70 25,20 75,20" fill="#C59B27"/>
+        <!-- Ukiran Relief Emas -->
+        <rect x="65" y="555" width="145" height="90" rx="8" fill="#B86B4B" opacity="0.25" stroke="#8C6910" stroke-width="2"/>
+        <circle cx="138" cy="600" r="24" fill="#C59B27" opacity="0.45"/>
+        <rect x="65" y="385" width="115" height="80" rx="6" fill="#B86B4B" opacity="0.25" stroke="#8C6910" stroke-width="2"/>
+        <rect x="60" y="220" width="85" height="75" rx="6" fill="#C59B27" opacity="0.3" stroke="#8C6910" stroke-width="2"/>
+      </svg>
+
+      <!-- KONTEN TENGAH YANG TAMPAK JELAS SAAT CANDI TERLEWATI -->
+      <div class="hero-inner-reveal" id="hero-reveal">
+        <span class="sunda-badge">Sampurasun • The Wedding Of</span>
+
+        <!-- ILUSTRASI ANIMASI MEMPELAI ADAT SUNDA (SIGER & BESKAP) -->
+        <div class="sunda-couple-svg">
+          <svg viewBox="0 0 300 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Lingkaran Cahaya Emas di Belakang Pengantin -->
+            <circle cx="150" cy="145" r="108" fill="#FFF7E5" stroke="#C59B27" stroke-width="2" stroke-dasharray="8 5"/>
+            
+            <!-- MEMPELAI WANITA (NAZWA - SIGER SUNDA & RONCE MELATI) -->
+            <g class="bride-anim">
+              <!-- Kebaya Sunda Cream Gold -->
+              <path d="M68 168 Q105 152 142 168 L150 245 L60 245 Z" fill="#FFF5E4" stroke="#C59B27" stroke-width="2"/>
+              <!-- Selempang Batik Lereng -->
+              <path d="M78 166 L132 245 L146 245 L95 162 Z" fill="#D5B88B" opacity="0.7"/>
+              <!-- Wajah -->
+              <circle cx="105" cy="126" r="23" fill="#FFE4D0"/>
+              <!-- Mahkota Siger Sunda Kemilau Emas -->
+              <path d="M74 114 L82 82 L95 96 L105 70 L115 96 L128 82 L136 114 Q105 104 74 114 Z" fill="url(#sigerGold)" stroke="#8C6910" stroke-width="1.8"/>
+              <circle cx="105" cy="92" r="4" fill="#3E6B52"/>
+              <circle cx="91" cy="100" r="3" fill="#B86B4B"/>
+              <circle cx="119" cy="100" r="3" fill="#B86B4B"/>
+              <!-- Ronce Melati Menggantung (Animasi Bergerak) -->
+              <g class="melati-swing">
+                <circle cx="77" cy="120" r="3.5" fill="#FFFFFF" stroke="#D5B88B"/>
+                <circle cx="76" cy="129" r="3.5" fill="#FFFFFF" stroke="#D5B88B"/>
+                <circle cx="76" cy="138" r="3.5" fill="#FFFFFF" stroke="#D5B88B"/>
+                <circle cx="76" cy="147" r="4" fill="#C59B27"/>
+                <circle cx="133" cy="120" r="3.5" fill="#FFFFFF" stroke="#D5B88B"/>
+                <circle cx="134" cy="129" r="3.5" fill="#FFFFFF" stroke="#D5B88B"/>
+                <circle cx="134" cy="138" r="3.5" fill="#FFFFFF" stroke="#D5B88B"/>
+                <circle cx="134" cy="147" r="4" fill="#C59B27"/>
+              </g>
+              <!-- Mata & Senyum Manis -->
+              <path d="M94 125 Q98 121 101 125" stroke="#3A2E25" stroke-width="2" stroke-linecap="round"/>
+              <path d="M109 125 Q112 121 116 125" stroke="#3A2E25" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="91" cy="131" r="3.5" fill="#F29B9B" opacity="0.55"/>
+              <circle cx="119" cy="131" r="3.5" fill="#F29B9B" opacity="0.55"/>
+              <path d="M100 135 Q105 140 110 135" stroke="#C85A5A" stroke-width="2" stroke-linecap="round"/>
+            </g>
+
+            <!-- MEMPELAI PRIA (LUTHFI - BENDO & BESKAP SUNDA) -->
+            <g class="groom-anim">
+              <!-- Beskap Putih Gading & Kalung Melati -->
+              <path d="M155 162 Q195 148 235 162 L242 245 L148 245 Z" fill="#FAF0DC" stroke="#C59B27" stroke-width="2"/>
+              <!-- Kalung Ronce Melati Pengantin Pria -->
+              <path d="M175 160 Q195 210 215 160" stroke="#FFFFFF" stroke-width="5" stroke-dasharray="4 3" fill="none"/>
+              <circle cx="195" cy="190" r="6" fill="#C59B27"/>
+              <!-- Wajah -->
+              <circle cx="195" cy="122" r="23" fill="#FFE4D0"/>
+              <!-- Bendo / Totopong Sunda -->
+              <path d="M168 112 Q195 92 222 112 L218 90 Q195 76 172 90 Z" fill="#8C6910" stroke="#C59B27" stroke-width="1.8"/>
+              <path d="M172 104 Q195 95 218 104" stroke="#E6C15A" stroke-width="3"/>
+              <circle cx="195" cy="96" r="5" fill="#E6C15A"/>
+              <!-- Mata & Senyum -->
+              <circle cx="187" cy="122" r="2.2" fill="#3A2E25"/>
+              <circle cx="203" cy="122" r="2.2" fill="#3A2E25"/>
+              <path d="M189 132 Q195 137 201 132" stroke="#3A2E25" stroke-width="2" stroke-linecap="round"/>
+            </g>
+
+            <defs>
+              <linearGradient id="sigerGold" x1="74" y1="70" x2="136" y2="114" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#FFF2B2"/>
+                <stop offset="50%" stop-color="#E6C15A"/>
+                <stop offset="100%" stop-color="#B38618"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <h1 class="font-script" style="font-size: 4.5rem; line-height: 1.05;">Nazwa & Luthfi</h1>
+        <p class="font-serif" style="font-size: 1.35rem; font-weight: 700; color: var(--gold-dark); letter-spacing: 4px; margin: 0.4rem 0 1rem;">
+          RABU, 11 NOVEMBER 2026
+        </p>
+        <p style="color: var(--text-muted); max-width: 540px; margin: 0 auto 1.2rem; font-size: 0.95rem;">
+          <strong>Seskoad Grand Ballroom</strong><br>
+          Jl. Gatot Subroto No.96, Lkr. Sel., Kec. Lengkong, Kota Bandung
+        </p>
+        <a href="#pasangan" class="btn-sunda">
+          <i class="fa-solid fa-chevron-down"></i> Lanjutkan Membaca
+        </a>
+      </div>
+
+      <!-- Petunjuk Scroll -->
+      <div class="scroll-hint" id="scroll-indicator">
+        <i class="fa-solid fa-computer-mouse"></i> Scroll ke bawah untuk melewati Gapura Candi
+      </div>
     </div>
+  </div>
 
-    <a href="#mempelai" class="btn-primary">
-      <i class="fa-solid fa-heart"></i> Lihat Detail Acara
-    </a>
-  </header>
+  <!-- ================= SALAM & AYAT SUCI ================= -->
+  <section id="pasangan" class="reveal-up">
+    <span class="sunda-badge">Bismillahirrahmanirrahim</span>
+    <h2 class="section-heading font-script">Assalamu’alaikum Wr. Wb.</h2>
+    
+    <!-- Pembatas Ornamen Sunda -->
+    <svg class="sunda-divider" viewBox="0 0 220 28" fill="none">
+      <path d="M10 14 L90 14 M130 14 L210 14" stroke="#C59B27" stroke-width="1.5"/>
+      <polygon points="110,2 122,14 110,26 98,14" fill="#E6C15A" stroke="#8C6910" stroke-width="1.5"/>
+    </svg>
 
-  <!-- PROFIL MEMPELAI -->
-  <section id="mempelai" class="reveal">
-    <p class="section-subtitle">Bride & Groom</p>
-    <h2 class="section-title script-font">Pasangan Berbahagia</h2>
-    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
-      Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami:
+    <p style="max-width: 650px; margin: 0 auto 2.5rem; color: var(--text-muted);">
+      Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah kami merangkaikan kasih sayang yang Kau ciptakan dalam ikatan pernikahan putra-putri kami:
     </p>
 
     <div class="couple-grid">
       <!-- Mempelai Wanita -->
-      <div class="couple-card">
-        <div class="avatar-wrap">
-          <svg width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="52" r="24" fill="#F9E5E5"/>
-            <circle cx="60" cy="54" r="20" fill="#FFE5D4"/>
-            <circle cx="52" cy="36" r="5" fill="#C89D54"/>
-            <circle cx="60" cy="34" r="6" fill="#E89999"/>
-            <circle cx="68" cy="36" r="5" fill="#C89D54"/>
-            <path d="M51 52 Q54 49 57 52" stroke="#3D352E" stroke-width="2" fill="none"/>
-            <path d="M63 52 Q66 49 69 52" stroke="#3D352E" stroke-width="2" fill="none"/>
-            <path d="M56 60 Q60 65 64 60" stroke="#D16B6B" stroke-width="2" fill="none"/>
-            <path d="M35 90 Q60 75 85 90 L90 120 L30 120 Z" fill="#FAD4D4"/>
+      <div class="sunda-card">
+        <div class="portrait-circle">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="70" r="24" fill="#FFE4D0"/>
+            <!-- Siger Mini -->
+            <path d="M35 58 L44 30 L55 44 L65 20 L75 44 L86 30 L95 58 Z" fill="#E6C15A" stroke="#8C6910" stroke-width="1.5"/>
+            <path d="M55 68 Q58 64 61 68 M69 68 Q72 64 75 68" stroke="#3A2E25" stroke-width="2" fill="none"/>
+            <path d="M60 78 Q65 83 70 78" stroke="#C85A5A" stroke-width="2" fill="none"/>
+            <path d="M35 105 Q65 90 95 105 L100 130 L30 130 Z" fill="#FFF5E4" stroke="#C59B27" stroke-width="1.5"/>
           </svg>
         </div>
-        <h3 class="couple-name script-font">Nazwa</h3>
-        <p style="font-weight: 600; margin-bottom: 0.3rem;">Nazwa Putri Cantika</p>
-        <p class="couple-parents">Putri Tercinta dari Bapak Keluarga Nazwa & Ibu Keluarga Nazwa</p>
+        <h3 class="font-script" style="font-size: 2.8rem;">Nazwa</h3>
+        <p class="font-serif" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.4rem;">Nazwa Putri Cantika</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          Putri tercinta dari<br><strong>Bapak Keluarga Nazwa & Ibu Keluarga Nazwa</strong>
+        </p>
       </div>
 
-      <div class="ampersand script-font">&</div>
+      <div class="font-script" style="font-size: 4.5rem;">&</div>
 
       <!-- Mempelai Pria -->
-      <div class="couple-card">
-        <div class="avatar-wrap">
-          <svg width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="54" r="20" fill="#FFE5D4"/>
-            <path d="M40 48 Q50 28 76 36 Q82 44 78 52 Q65 40 42 50 Z" fill="#3D352E"/>
-            <circle cx="53" cy="54" r="2" fill="#3D352E"/>
-            <circle cx="67" cy="54" r="2" fill="#3D352E"/>
-            <path d="M55 62 Q60 67 65 62" stroke="#3D352E" stroke-width="2" fill="none"/>
-            <path d="M32 90 Q60 78 88 90 L92 120 L28 120 Z" fill="#E8DEC8"/>
-            <polygon points="55,86 60,90 55,94" fill="#C89D54"/>
-            <polygon points="65,86 60,90 65,94" fill="#C89D54"/>
+      <div class="sunda-card">
+        <div class="portrait-circle">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="70" r="24" fill="#FFE4D0"/>
+            <!-- Bendo Sunda Mini -->
+            <path d="M38 58 Q65 40 92 58 L88 36 Q65 24 42 36 Z" fill="#8C6910" stroke="#E6C15A" stroke-width="1.5"/>
+            <circle cx="57" cy="70" r="2.2" fill="#3A2E25"/>
+            <circle cx="73" cy="70" r="2.2" fill="#3A2E25"/>
+            <path d="M59 80 Q65 85 71 80" stroke="#3A2E25" stroke-width="2" fill="none"/>
+            <path d="M35 105 Q65 90 95 105 L100 130 L30 130 Z" fill="#FAF0DC" stroke="#C59B27" stroke-width="1.5"/>
           </svg>
         </div>
-        <h3 class="couple-name script-font">Luthfi</h3>
-        <p style="font-weight: 600; margin-bottom: 0.3rem;">Muhammad Luthfi Pratama</p>
-        <p class="couple-parents">Putra Tercinta dari Bapak Keluarga Luthfi & Ibu Keluarga Luthfi</p>
+        <h3 class="font-script" style="font-size: 2.8rem;">Luthfi</h3>
+        <p class="font-serif" style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.4rem;">Luthfi Fauzi</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          Putra tercinta dari<br><strong>Bapak Keluarga Luthfi & Ibu Keluarga Luthfi</strong>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- JADWAL & LOKASI ACARA -->
-  <section id="acara" class="reveal">
-    <p class="section-subtitle">Save The Date</p>
-    <h2 class="section-title script-font">Rangkaian Acara</h2>
+  <!-- ================= HITUNG MUNDUR & DETAIL ACARA ================= -->
+  <section id="acara" class="reveal-up">
+    <span class="sunda-badge">Waktos & Tempat</span>
+    <h2 class="section-heading font-script">Rangkaian Acara</h2>
 
-    <div class="event-cards">
-      <div class="event-card">
-        <div class="event-icon"><i class="fa-solid fa-ring"></i></div>
-        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Akad Nikah</h3>
-        <p style="font-weight: 600; color: var(--primary-gold);">Rabu, 11 November 2026</p>
-        <p style="color: var(--text-muted); margin-top: 0.4rem;">Pukul 08.00 WIB - 10.00 WIB</p>
+    <!-- Countdown Timer -->
+    <div class="countdown-wrap">
+      <div class="cd-card"><span id="cd-days">00</span><small>Hari</small></div>
+      <div class="cd-card"><span id="cd-hours">00</span><small>Jam</small></div>
+      <div class="cd-card"><span id="cd-mins">00</span><small>Menit</small></div>
+      <div class="cd-card"><span id="cd-secs">00</span><small>Detik</small></div>
+    </div>
+
+    <div class="event-grid">
+      <div class="sunda-card">
+        <i class="fa-solid fa-handshake-simple" style="font-size: 2.2rem; color: var(--gold-primary); margin-bottom: 1rem;"></i>
+        <h3 class="font-serif" style="font-size: 2rem;">Akad Nikah</h3>
+        <p style="color: var(--gold-dark); font-weight: 600; margin: 0.5rem 0;">Rabu, 11 November 2026</p>
+        <p style="color: var(--text-muted);">Pukul 08.00 WIB – 10.00 WIB</p>
       </div>
 
-      <div class="event-card">
-        <div class="event-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
-        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Resepsi Pernikahan</h3>
-        <p style="font-weight: 600; color: var(--primary-gold);">Rabu, 11 November 2026</p>
-        <p style="color: var(--text-muted); margin-top: 0.4rem;">Pukul 11.00 WIB - 14.00 WIB</p>
+      <div class="sunda-card">
+        <i class="fa-solid fa-crown" style="font-size: 2.2rem; color: var(--gold-primary); margin-bottom: 1rem;"></i>
+        <h3 class="font-serif" style="font-size: 2rem;">Upacara Adat & Resepsi</h3>
+        <p style="color: var(--gold-dark); font-weight: 600; margin: 0.5rem 0;">Rabu, 11 November 2026</p>
+        <p style="color: var(--text-muted);">Pukul 11.00 WIB – 14.00 WIB</p>
       </div>
     </div>
 
-    <!-- Gedung & Google Maps -->
-    <div class="venue-box">
-      <i class="fa-solid fa-location-dot" style="font-size: 2rem; color: var(--primary-gold); margin-bottom: 0.8rem;"></i>
-      <h3 style="font-size: 1.9rem; margin-bottom: 0.4rem;">Seskoad Grand Ballroom</h3>
-      <p style="color: var(--text-muted); max-width: 550px; margin: 0 auto 1.2rem;">
+    <!-- Lokasi Gedung Seskoad -->
+    <div class="venue-panel">
+      <span class="sunda-badge">Lokasi Acara</span>
+      <h3 class="font-serif" style="font-size: 2.2rem; margin-bottom: 0.5rem;">Seskoad Grand Ballroom</h3>
+      <p style="color: var(--text-muted); max-width: 580px; margin: 0 auto 1.4rem;">
         Jl. Gatot Subroto No.96, Lkr. Sel., Kec. Lengkong, Kota Bandung, Jawa Barat 40263
       </p>
 
-      <a href="https://www.google.com/maps/search/?api=1&query=Seskoad+Grand+Ballroom+Jl.+Gatot+Subroto+No.96+Bandung" target="_blank" rel="noopener noreferrer" class="btn-primary">
-        <i class="fa-solid fa-map-location-dot"></i> Petunjuk Arah Google Maps
+      <a href="https://www.google.com/maps/search/?api=1&query=Seskoad+Grand+Ballroom+Jl.+Gatot+Subroto+No.96+Bandung" target="_blank" rel="noopener noreferrer" class="btn-sunda">
+        <i class="fa-solid fa-map-location-dot"></i> Buka Google Maps
       </a>
 
-      <div class="map-container">
+      <div class="map-frame">
         <iframe 
           src="https://maps.google.com/maps?q=Seskoad%20Grand%20Ballroom%20Jl.%20Gatot%20Subroto%20No.96%20Bandung&t=&z=15&ie=UTF8&iwloc=&output=embed" 
           width="100%" 
@@ -662,153 +823,191 @@
     </div>
   </section>
 
-  <!-- UCAPAN & RSVP -->
-  <section id="rsvp" class="reveal">
-    <p class="section-subtitle">Wishes & RSVP</p>
-    <h2 class="section-title script-font">Doa & Konfirmasi Kehadiran</h2>
+  <!-- ================= DOA & KONFIRMASI KEHADIRAN (RSVP) ================= -->
+  <section id="rsvp" class="reveal-up">
+    <span class="sunda-badge">Pangjajap Doa & RSVP</span>
+    <h2 class="section-heading font-script">Ucapan & Konfirmasi Kehadiran</h2>
 
-    <div class="rsvp-box">
-      <form id="wish-form" onsubmit="submitWish(event)">
-        <div class="form-group">
-          <label>Nama Lengkap</label>
-          <input type="text" id="sender-name" class="form-control" placeholder="Masukkan nama Anda" required />
-        </div>
-        <div class="form-group">
-          <label>Konfirmasi Kehadiran</label>
-          <select id="attendance" class="form-control">
-            <option value="Hadir">InsyaAllah Hadir</option>
-            <option value="Belum Pasti">Masih Ragu</option>
-            <option value="Tidak Hadir">Maaf, Berhalangan Hadir</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Ucapan & Doa Restu</label>
-          <textarea id="sender-message" rows="3" class="form-control" placeholder="Tuliskan doa terbaik untuk Nazwa & Luthfi..." required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-          <i class="fa-solid fa-paper-plane"></i> Kirim Ucapan
+    <div class="rsvp-container">
+      <form id="rsvp-form" onsubmit="addWish(event)">
+        <label style="font-weight: 600; font-size: 0.9rem;">Nama Lengkap</label>
+        <input type="text" id="guest-input-name" class="input-field" placeholder="Contoh: Kang Dedi & Teh Rina" required />
+
+        <label style="font-weight: 600; font-size: 0.9rem;">Konfirmasi Kehadiran</label>
+        <select id="guest-status" class="input-field">
+          <option value="Hadir">InsyaAllah Hadir</option>
+          <option value="Masih Ragu">Masih Ragu</option>
+          <option value="Berhalangan">Maaf, Berhalangan Hadir</option>
+        </select>
+
+        <label style="font-weight: 600; font-size: 0.9rem;">Ucapan & Doa Restu</label>
+        <textarea id="guest-msg" rows="3" class="input-field" placeholder="Tulis doa terbaik untuk pengantin..." required></textarea>
+
+        <button type="submit" class="btn-sunda" style="width: 100%; justify-content: center;">
+          <i class="fa-solid fa-paper-plane"></i> Kirim Doa Restu
         </button>
       </form>
 
-      <div class="wishes-list" id="wishes-container">
-        <div class="wish-item">
-          <strong>Keluarga Besar Bandung</strong> <small style="color: var(--primary-gold);">• Hadir</small>
-          <p style="font-size: 0.9rem; margin-top: 0.3rem;">Selamat menempuh hidup baru Nazwa & Luthfi! Semoga menjadi keluarga sakinah, mawaddah, warahmah.</p>
+      <div id="wishes-feed" style="margin-top: 2rem; max-height: 280px; overflow-y: auto;">
+        <div class="wish-card">
+          <strong>Keluarga Besar Priangan</strong> <small style="color: var(--gold-dark);">• Hadir</small>
+          <p style="font-size: 0.9rem; margin-top: 0.25rem;">Wilujeng ngambah sagara rumah tangga Nazwa & Luthfi. Mugia sing jadi kulawarga nu sakinah, mawaddah, warahmah.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TANDA KASIH / AMPLOP DIGITAL -->
-  <section id="gift" class="reveal">
-    <p class="section-subtitle">Wedding Gift</p>
-    <h2 class="section-title script-font">Tanda Kasih</h2>
-    <p style="color: var(--text-muted); max-width: 540px; margin: 0 auto;">
-      Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat mengirimkannya melalui:
+  <!-- ================= TANDA KASIH (AMPLOP DIGITAL) ================= -->
+  <section id="hadiah" class="reveal-up">
+    <span class="sunda-badge">Tanda Kasih</span>
+    <h2 class="section-heading font-script">Amplop Digital</h2>
+    <p style="color: var(--text-muted); max-width: 540px; margin: 0 auto 2rem;">
+      Kehadiran dan doa restu Bapak/Ibu/Saudara/i merupakan kado terindah bagi kami. Namun apabila ingin memberikan tanda kasih, dapat melalui:
     </p>
 
-    <div class="gift-card">
-      <i class="fa-solid fa-credit-card" style="font-size: 2rem; color: var(--primary-gold); margin-bottom: 0.5rem;"></i>
-      <h3 style="font-size: 1.4rem;">Bank BCA</h3>
-      <p id="rek-number" style="font-size: 1.35rem; font-weight: 700; letter-spacing: 2px; margin: 0.5rem 0; color: var(--text-dark);">1234567890</p>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">a.n. Nazwa / Luthfi</p>
-      <button class="btn-primary" onclick="copyRekening()" id="copy-btn" style="padding: 0.6rem 1.4rem; font-size: 0.85rem;">
-        <i class="fa-regular fa-copy"></i> Salin Nomor Rekening
+    <div class="sunda-card" style="max-width: 440px; margin: 0 auto;">
+      <i class="fa-solid fa-building-columns" style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 0.6rem;"></i>
+      <h3 class="font-serif" style="font-size: 1.6rem;">Bank BCA</h3>
+      <p id="rek-no" style="font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; color: var(--gold-dark); margin: 0.4rem 0;">1234567890</p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.2rem;">a.n. Nazwa / Luthfi</p>
+      <button class="btn-sunda" onclick="copyRek()" id="btn-copy" style="padding: 0.65rem 1.5rem; font-size: 0.85rem;">
+        <i class="fa-regular fa-copy"></i> Salin Rekening
       </button>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer style="padding: 3rem 1.5rem; text-align: center; background: #FAF3E8; margin-top: 3rem;">
-    <h2 class="script-font" style="font-size: 2.8rem;">Nazwa & Luthfi</h2>
-    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Terima kasih atas doa dan kehadiran Bapak/Ibu/Saudara/i.</p>
+  <footer style="background: #F5E8D0; padding: 3.5rem 1.5rem; text-align: center; border-top: 2px solid var(--gold-bright);">
+    <h2 class="font-script" style="font-size: 3.2rem;">Nazwa & Luthfi</h2>
+    <p style="color: var(--text-muted); font-size: 0.92rem;">Hatur Nuhun Kana Kasumpingan SarengPidua Ti Sadayana</p>
   </footer>
 
-  <!-- JAVASCRIPT -->
+  <!-- ================= JAVASCRIPT INTERAKTIF ================= -->
   <script>
-    // 1. Ambil Nama Tamu dari Parameter URL (?to=Nama+Tamu)
-    const urlParams = new URLSearchParams(window.location.search);
-    const guest = urlParams.get('to');
-    if (guest) {
-      document.getElementById('guest-name').textContent = guest;
+    // 1. Ambil Nama Tamu dari URL (?to=Nama+Tamu)
+    const params = new URLSearchParams(window.location.search);
+    const guestTo = params.get('to');
+    if (guestTo) {
+      document.getElementById('guest-display').textContent = guestTo;
     }
 
-    // 2. Musik Ambient Romantis (Web Audio API Synthesizer agar tidak perlu file MP3 eksternal)
-    let audioCtx;
-    let isPlaying = false;
-    let melodyInterval;
+    // 2. Efek 3D Scroll-Through Candi Bentar
+    const tunnelWrapper = document.getElementById('tunnel-wrapper');
+    const candiLeft = document.getElementById('candi-left');
+    const candiRight = document.getElementById('candi-right');
+    const heroReveal = document.getElementById('hero-reveal');
+    const cloudsParallax = document.getElementById('clouds-parallax');
+    const scrollIndicator = document.getElementById('scroll-indicator');
 
-    function playAmbientChime() {
+    function updateCandiScroll() {
+      const rect = tunnelWrapper.getBoundingClientRect();
+      const maxScroll = tunnelWrapper.offsetHeight - window.innerHeight;
+      const currentScroll = Math.min(Math.max(-rect.top, 0), maxScroll);
+      const progress = maxScroll > 0 ? currentScroll / maxScroll : 0; // Nilai 0.0 s/d 1.0
+
+      // Candi membesar (scale) dan bergeser membuka ke kiri & kanan seolah kita menembus ke dalam candi
+      const gateScale = 1 + progress * 1.85;
+      const moveX = progress * 115; // persen bergeser keluar layar
+      const gateOpacity = Math.max(1 - Math.max(0, (progress - 0.55) * 2.2), 0);
+      const gateBlur = Math.max(0, (progress - 0.5) * 10);
+
+      candiLeft.style.transform = `translate3d(-${moveX}%, ${progress * 12}%, 0) scale(${gateScale})`;
+      candiLeft.style.opacity = gateOpacity;
+      candiLeft.style.filter = `blur(${gateBlur}px) drop-shadow(0 20px 35px rgba(58, 46, 37, 0.25))`;
+
+      candiRight.style.transform = `translate3d(${moveX}%, ${progress * 12}%, 0) scale(${gateScale})`;
+      candiRight.style.opacity = gateOpacity;
+      candiRight.style.filter = `blur(${gateBlur}px) drop-shadow(0 20px 35px rgba(58, 46, 37, 0.25))`;
+
+      // Konten Pengantin di tengah semakin jelas dan membesar ke ukuran normal (scale 1)
+      const contentScale = 0.82 + Math.min(progress * 1.3, 1) * 0.18;
+      const contentOpacity = 0.35 + Math.min(progress * 1.4, 1) * 0.65;
+      heroReveal.style.transform = `scale(${contentScale})`;
+      heroReveal.style.opacity = contentOpacity;
+
+      // Awan bergeser lembut
+      cloudsParallax.style.transform = `translateY(-${progress * 60}px) scale(${1 + progress * 0.2})`;
+
+      // Sembunyikan petunjuk scroll jika sudah lewat
+      scrollIndicator.style.opacity = progress > 0.25 ? '0' : '1';
+    }
+
+    window.addEventListener('scroll', updateCandiScroll, { passive: true });
+    updateCandiScroll();
+
+    // 3. Synthesizer Nada Pentatonis Sunda (Laras Degung / Kacapi Lembut)
+    let audioCtx;
+    let musicPlaying = false;
+    let degungTimer;
+
+    function startSundaDegung() {
       if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
-      const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 523.25, 392.00, 329.63];
-      let index = 0;
+      // Tangga nada Pentatonis Sunda (Da - Mi - Na - Ti - La)
+      const sundaNotes = [293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 523.25, 392.00];
+      let idx = 0;
 
-      melodyInterval = setInterval(() => {
-        if (!isPlaying) return;
+      degungTimer = setInterval(() => {
+        if (!musicPlaying) return;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
+
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(notes[index % notes.length], audioCtx.currentTime);
-        
-        gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 0.3);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.2);
+        osc.frequency.setValueAtTime(sundaNotes[idx % sundaNotes.length], audioCtx.currentTime);
+
+        // Karakter petikan kacapi lembut
+        gain.gain.setValueAtTime(0.005, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.065, audioCtx.currentTime + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.4);
 
         osc.connect(gain);
         gain.connect(audioCtx.destination);
 
         osc.start();
-        osc.stop(audioCtx.currentTime + 2.2);
-        index++;
-      }, 1400);
+        osc.stop(audioCtx.currentTime + 2.4);
+        idx++;
+      }, 1100);
     }
 
-    function openInvitation() {
-      document.getElementById('cover-overlay').classList.add('open');
+    function enterGate() {
+      document.getElementById('cover-gate').classList.add('hidden');
       document.body.classList.remove('locked');
-      isPlaying = true;
-      document.getElementById('music-toggle').classList.remove('paused');
-      playAmbientChime();
+      musicPlaying = true;
+      document.getElementById('music-btn').classList.remove('paused');
+      startSundaDegung();
+
+      // Animasi awal sedikit scroll otomatis agar tamu melihat gerakan candi
+      setTimeout(() => {
+        window.scrollTo({ top: window.innerHeight * 0.75, behavior: 'smooth' });
+      }, 500);
     }
 
-    function toggleMusic() {
-      const btn = document.getElementById('music-toggle');
-      isPlaying = !isPlaying;
-      if (isPlaying) {
-        btn.classList.remove('paused');
-      } else {
-        btn.classList.add('paused');
-      }
+    function toggleSundaMusic() {
+      const btn = document.getElementById('music-btn');
+      musicPlaying = !musicPlaying;
+      btn.classList.toggle('paused', !musicPlaying);
     }
 
-    // 3. Countdown Timer Menuju 11 November 2026 Pukul 08:00 WIB
-    const weddingDate = new Date('2026-11-11T08:00:00+07:00').getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
-
+    // 4. Countdown Timer (11 November 2026 Pukul 08:00 WIB)
+    const targetTime = new Date('2026-11-11T08:00:00+07:00').getTime();
+    function refreshCountdown() {
+      const now = Date.now();
+      const diff = targetTime - now;
       if (diff > 0) {
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-        document.getElementById('days').textContent = String(d).padStart(2, '0');
-        document.getElementById('hours').textContent = String(h).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(m).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+        document.getElementById('cd-days').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+        document.getElementById('cd-hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
       }
     }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(refreshCountdown, 1000);
+    refreshCountdown();
 
-    // 4. Animasi Kelopak Bunga Berjatuhan (Canvas)
-    const canvas = document.getElementById('petals-canvas');
+    // 5. Kelopak Bunga Melati & Kemilau Emas Jatuh (Canvas)
+    const canvas = document.getElementById('jasmine-canvas');
     const ctx = canvas.getContext('2d');
-    let petals = [];
+    let particles = [];
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
@@ -817,79 +1016,74 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    for (let i = 0; i < 26; i++) {
-      petals.push({
+    for (let i = 0; i < 28; i++) {
+      particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 6 + 4,
-        speedY: Math.random() * 0.9 + 0.4,
-        speedX: Math.random() * 0.6 - 0.3,
-        angle: Math.random() * 360
+        size: Math.random() * 5 + 3.5,
+        speedY: Math.random() * 0.8 + 0.35,
+        speedX: Math.random() * 0.5 - 0.25,
+        rot: Math.random() * 360,
+        isGold: Math.random() > 0.5
       });
     }
 
-    function drawPetals() {
+    function animateJasmine() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      petals.forEach(p => {
+      particles.forEach(p => {
         ctx.save();
         ctx.translate(p.x, p.y);
-        ctx.rotate((p.angle * Math.PI) / 180);
-        ctx.fillStyle = 'rgba(232, 153, 153, 0.35)';
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.isGold ? 'rgba(230, 193, 90, 0.42)' : 'rgba(255, 255, 255, 0.8)';
         ctx.beginPath();
-        ctx.ellipse(0, 0, p.r, p.r * 0.6, 0, 0, Math.PI * 2);
+        ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
 
         p.y += p.speedY;
         p.x += p.speedX;
-        p.angle += 0.5;
-
+        p.rot += 0.6;
         if (p.y > canvas.height) {
           p.y = -10;
           p.x = Math.random() * canvas.width;
         }
       });
-      requestAnimationFrame(drawPetals);
+      requestAnimationFrame(animateJasmine);
     }
-    drawPetals();
+    animateJasmine();
 
-    // 5. Scroll Reveal Animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
+    // 6. Scroll Reveal Section
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // 6. Tambah Ucapan & Doa
-    function submitWish(e) {
+    // 7. Form Ucapan & Salin Rekening
+    function addWish(e) {
       e.preventDefault();
-      const name = document.getElementById('sender-name').value;
-      const status = document.getElementById('attendance').value;
-      const msg = document.getElementById('sender-message').value;
+      const name = document.getElementById('guest-input-name').value;
+      const status = document.getElementById('guest-status').value;
+      const msg = document.getElementById('guest-msg').value;
 
-      const container = document.getElementById('wishes-container');
-      const div = document.createElement('div');
-      div.className = 'wish-item';
-      div.innerHTML = `
-        <strong>${name}</strong> <small style="color: var(--primary-gold);">• ${status}</small>
-        <p style="font-size: 0.9rem; margin-top: 0.3rem;">${msg}</p>
+      const feed = document.getElementById('wishes-feed');
+      const card = document.createElement('div');
+      card.className = 'wish-card';
+      card.innerHTML = `
+        <strong>${name}</strong> <small style="color: var(--gold-dark);">• ${status}</small>
+        <p style="font-size: 0.9rem; margin-top: 0.25rem;">${msg}</p>
       `;
-      container.prepend(div);
-      document.getElementById('wish-form').reset();
+      feed.prepend(card);
+      document.getElementById('rsvp-form').reset();
     }
 
-    // 7. Salin Nomor Rekening
-    function copyRekening() {
-      const rek = document.getElementById('rek-number').textContent;
-      navigator.clipboard.writeText(rek);
-      const btn = document.getElementById('copy-btn');
-      btn.innerHTML = '<i class="fa-solid fa-check"></i> Berhasil Disalin';
+    function copyRek() {
+      navigator.clipboard.writeText(document.getElementById('rek-no').textContent);
+      const btn = document.getElementById('btn-copy');
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> Nomor Rekening Tersalin';
       setTimeout(() => {
-        btn.innerHTML = '<i class="fa-regular fa-copy"></i> Salin Nomor Rekening';
+        btn.innerHTML = '<i class="fa-regular fa-copy"></i> Salin Rekening';
       }, 2000);
     }
   </script>
